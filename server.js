@@ -15,6 +15,10 @@ app.get("/beautylash", productController.index);
 
 app.get("/beautylash/customers", productController.customers);
 
+app.get("/beautylash/add-post", productController.newPost);
+
+app.post("/beautylash/add-post", productController.createPost);
+
 app.get("/", productController.homepage);
 
 /* ========= listener ============ */

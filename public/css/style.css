@@ -1,4 +1,36 @@
+body {
+  background-color: #393e46;
+  color: white;
+}
+
+.frontpage-banner {
+  width: 100%;
+}
+
+.frontpage-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.frontpage-message {
+  max-width: 500px;
+  font-size: 20px;
+}
+
+.frontpage-button {
+  background-color: #e6c4c0;
+  width: fit-content;
+  color: black;
+}
+
 .instagram-post {
   max-width: 300px;
   max-height: 300px;
+}
+
+label {
+  /* margin-bottom: 1rem; */
+  margin-right: 20px;
+  font-weight: 500;
+  width: 100px;
 }
