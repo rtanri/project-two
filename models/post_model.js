@@ -1,7 +1,7 @@
-class Post {
+class Posting {
   constructor(customerName, serviceName, category, image, index) {
-    (this.customer = customerName),
-      (this.service = serviceName),
+    (this.customerName = customerName),
+      (this.serviceName = serviceName),
       (this.image = image),
       (this.category = category),
       this.index;
@@ -50,7 +50,7 @@ const customers = [
 module.exports = {
   customers: customers.map(
     (element, index) =>
-      new Post(
+      new Posting(
         element.customerName,
         element.serviceName,
         element.category,
@@ -58,4 +58,5 @@ module.exports = {
         index
       )
   ),
+  Posting,
 };

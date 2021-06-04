@@ -1,4 +1,4 @@
-const { customers, Post } = require("../models/post_model");
+const { customers, Posting } = require("../models/post_model");
 
 module.exports = {
   index: (req, res) => {
@@ -9,10 +9,11 @@ module.exports = {
   },
   newPost: (req, res) => {
     res.render("products/new");
+    console.log(1);
   },
   createPost: (req, res) => {
     console.log(req.body);
-    const newEntry = new Post(
+    const newEntry = new Posting(
       req.body.customerName,
       req.body.serviceName,
       req.body.category,
