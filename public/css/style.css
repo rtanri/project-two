@@ -23,6 +23,13 @@ body {
   color: black;
 }
 
+.frontpage-calendar {
+  max-width: 500px;
+  background-color: aliceblue;
+  color: black;
+  padding: 20px;
+}
+
 .instagram-post {
   max-width: 300px;
   max-height: 300px;
@@ -34,3 +41,15 @@ label {
   font-weight: 500;
   width: 100px;
 }
+
+/* 
+Color code in light theme
+pink footer: #EECBCB
+text: #3D4246
+sale price: #557B97
+primary button: #557B97
+borders & lines in page: #E8E9EB
+
+
+
+*/
