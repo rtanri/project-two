@@ -31,8 +31,8 @@ body {
 }
 
 .instagram-post {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 350px;
+  max-height: 350px;
 }
 
 label {
@@ -42,6 +42,24 @@ label {
   width: 100px;
 }
 
+/* ======= Carousel ======= */
+.carousel-image {
+  max-width: 250px;
+  max-height: 250px;
+}
+.carousel {
+  /* background-color: coral; */
+}
+
+.shift-down {
+  position: relative;
+  top: 20px;
+}
+
+#carousel-fixed {
+  max-width: 798px;
+}
+
 /* 
 Color code in light theme
 pink footer: #EECBCB
@@ -49,7 +67,5 @@ text: #3D4246
 sale price: #557B97
 primary button: #557B97
 borders & lines in page: #E8E9EB
-
-
 
 */

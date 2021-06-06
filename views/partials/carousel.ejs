@@ -1,32 +1,79 @@
-<div class="d-flex flex-column justify-content-center frontpage-container">
+<div class="d-flex flex-column justify-content-center align-items-center frontpage-container">
       <h2 class="text-center display-4 my-5">Most Popular Treatments</h2>
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" ></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-            </div>
+      <!--Carousel Wrapper-->
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-            
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/assets/customers/lashlift-1.jpg" class="d-block w-100 instagram-post">
-              </div>
-              <div class="carousel-item">
-                <img src="/assets/customers/lashlift-2.jpg" class="d-block w-100 instagram-post" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="/assets/customers/lashlift-3.jpg" class="d-block w-100 instagram-post" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+    <!--Slides-->
+    <div class="carousel-inner" id="carousel-fixed" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/assets/customers/lashlift-1.jpg" class="carousel-image">
           </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/lashlift-2.jpg" class="carousel-image">
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/lashlift-3.jpg" class="carousel-image">
+          </div>
+        </div>
+      </div>
+      <!--/.First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/assets/customers/lashlift-4.jpg" class="carousel-image">
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/lashlift-5.jpg" class="carousel-image">
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/lashlift-6.jpg" class="carousel-image">
+          </div>
+        </div>
+      </div>
+      <!--/.Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/assets/customers/lashlift-7.jpg" class="carousel-image">
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/skinny-volume-ext-1.jpg" class="carousel-image">
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <img src="/assets/customers/skinny-volume-ext-2.jpg" class="carousel-image">
+          </div>
+        </div>
+      </div>
+      <!--/.Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Indicators-->
+    <div class="carousel-indicators shift-down">
+      <button type="button" data-bs-target="#multi-item-example" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#multi-item-example" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#multi-item-example" data-bs-slide-to="2"></button>
+    </div>
+    <!--/.Indicators-->
+  </div>
+  <!--/.Carousel Wrapper-->
+    
+            
 </div>
