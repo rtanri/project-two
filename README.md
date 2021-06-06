@@ -5,11 +5,12 @@ Fully developed web for booking services, customer login and upselling features
 ## Extension & Library Installed
 
 1. Express EJS
-1. Bootstrap
-1. FullCalendar
-1. Mongoose
-1. Lodash
-1. dotenv
+1. Bootstrap - CSS library
+1. FullCalendar - calendar library
+1. Mongoose - database mgmt
+1. Lodash - utility
+1. dotenv - privacy
+1. Moment.js - time converter
 
 ## Page Views
 
@@ -21,7 +22,6 @@ Fully developed web for booking services, customer login and upselling features
 
 ## Other Library that I plan to use
 
-1. Moment.js - time converter
 1. Stripe - payment gateaway
 1. Captcha or antibot
 
