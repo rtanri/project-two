@@ -9,6 +9,7 @@ Fully developed web for booking services, customer login and upselling features
 1. FullCalendar
 1. Mongoose
 1. Lodash
+1. dotenv
 
 ## Page Views
 
