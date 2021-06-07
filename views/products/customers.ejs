@@ -5,7 +5,7 @@
       <div class="container d-flex justify-content-center flex-wrap">
             <% postings.forEach(element => { %> 
                   <div>
-                        <img src="<%= element.image %>" class="instagram-post mb-3 mx-2 border">
+                        <a href="/beautylash/<%= element.slug %>"><img src="<%= element.image %>" class="instagram-post mb-3 mx-2 border"></a>
                   </div>
             <% }) %>
         </div>

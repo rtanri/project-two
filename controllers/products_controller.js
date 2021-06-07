@@ -41,8 +41,24 @@ module.exports = {
         res.redirect("/beautylash/add-post");
       });
   },
-
   homepage: (req, res) => {
     res.render("products/homepage");
+  },
+  show: (req, res) => {
+    PostModel.findOne({ image: req.params.image }).then(item => {
+      console.log("success");
+
+      if (!item) {
+        res.redirect("/beautylash");
+      }
+      res
+        .render("products/show", {
+          item,
+        })
+        .catch(err => {
+          console.log(err);
+          res.redirect("/beautylash");
+        });
+    });
   },
 };

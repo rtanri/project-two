@@ -27,6 +27,8 @@ app.get("/beautylash/add-post", productController.newPost);
 
 app.post("/beautylash/add-post", productController.createPost);
 
+app.get("/beautylash/:slug", productController.show);
+
 app.get("/", productController.homepage);
 
 /* ========= listener ============ */

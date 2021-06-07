@@ -44,6 +44,11 @@ let data = [
   },
 ];
 
+data = data.map(item => {
+  item.slug = _.kebabCase(item.service);
+  return item;
+});
+
 /* ======== connection ======== */
 
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
