@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const productController = require("./controllers/products_controller");
+const userController = require("./controllers/users_controller");
 
 /* ========= database ============ */
 const mongoose = require("mongoose");
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-/* ========= routes ============ */
+/* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
 app.get("/beautylash/customers", productController.customers);
@@ -30,6 +31,11 @@ app.post("/beautylash/add-post", productController.createPost);
 app.get("/beautylash/:slug", productController.show);
 
 app.get("/", productController.homepage);
+
+/* ========= Routes: User ============ */
+app.get("/beautylash/users/login", userController.loginForm);
+app.get("/beautylash/users/register", userController.registerForm);
+app.get("/beautylash/users/profile", userController.dashboard);
 
 /* ========= listener ============ */
 
