@@ -41,7 +41,7 @@ app.get("/beautylash/users/register", userController.registerForm);
 
 app.post("/beautylash/users/register", userController.registerUser);
 
-app.get("/beautylash/users/profile", userController.dashboard);
+app.get("/beautylash/users/dashboard", userController.dashboard);
 
 /* ========= listener ============ */
 

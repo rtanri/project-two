@@ -23,13 +23,6 @@ body {
   color: black;
 }
 
-.frontpage-calendar {
-  max-width: 500px;
-  background-color: aliceblue;
-  color: black;
-  padding: 20px;
-}
-
 .instagram-post {
   max-width: 350px;
   max-height: 350px;
@@ -41,6 +34,25 @@ label {
   font-weight: 500;
   width: 100px;
 }
+/* ======= Calendar ======= */
+.frontpage-calendar {
+  max-width: 500px;
+  background-color: #eaeaea;
+  color: #3d4246;
+  padding: 20px;
+}
+
+.fc-daygrid-day-number {
+  color: black;
+  text-decoration: none;
+}
+
+.fc-col-header-cell-cushion {
+  color: black;
+  text-decoration: none;
+}
+
+/* ======= Calendar End ======= */
 
 /* ======= Carousel ======= */
 .carousel-image {
@@ -58,6 +70,26 @@ label {
 
 #carousel-fixed {
   max-width: 798px;
+}
+
+/* user login, register, logout */
+.form-input-size {
+  width: 300px;
+  font-size: 20px;
+}
+
+.calendar-input-size {
+  width: 150px;
+  font-size: 14px;
+}
+
+.table-timeslot-td {
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.timeslot-option {
+  min-width: 150px;
 }
 
 /* 

@@ -1,32 +1,34 @@
 <%- include('../partials/head') %>
 
-<div class="container">
-  <form method="POST" action="/users/register">
+<div class="container my-5 d-flex flex-column align-items-center">
+  <form method="POST" action="/beautylash/users/register">
 
     <div class="mb-3">
-      <label for="first_name" class="form-label">Full Name</label>
-      <input type="text" class="form-control" id="full_name" name="full_name"
+      <label for="full_name" class="form-label form-input-size">Full Name</label>
+      <input type="text" class="form-control form-input-size" id="full_name" name="full_name"
       />
     </div>
 
     <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" />
+      <label for="email" class="form-label form-input-size">Email</label>
+      <input type="email" class="form-control form-input-size" id="email" name="email" />
     </div>
 
     <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password"
+      <label for="password" class="form-label form-input-size">Password</label>
+      <input type="password" class="form-control form-input-size" id="password" name="password"
       />
     </div>
 
     <div class="mb-3">
-      <label for="password_confirm" class="form-label">Confirm Password</label>
-      <input type="password" class="form-control" id="password_confirm" name="password_confirm"
+      <label for="password_confirm" class="form-label form-input-size">Confirm Password</label>
+      <input type="password" class="form-control form-input-size" id="password_confirm" name="password_confirm"
       />
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+      <button type="submit" class="btn btn-primary">Sign in</button>
     </div>
     
-    <button type="submit" class="btn btn-primary">Sign in</button>
   
 </form>
 </div>

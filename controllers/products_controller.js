@@ -25,18 +25,20 @@ module.exports = {
     console.log(req.body);
 
     const timestampNow = moment().utc();
-
+    console.log(1);
     PostModel.create({
       name: req.body.name,
-      service: req.body.name,
+      service: req.body.service,
       category: req.body.category,
       image: req.body.image,
       created_at: timestampNow,
     })
       .then(createResp => {
+        console.log(2);
         res.redirect("/beautylash/customers");
       })
       .catch(err => {
+        console.log(3);
         console.log(err);
         res.redirect("/beautylash/add-post");
       });

@@ -11,17 +11,19 @@ module.exports = {
     /* ===== validating user, pw matches, email ===== */
     if (!req.body.full_name) {
       res.redirect("/beautylash/users/register");
-      //message: error
+      console.log(1);
       return;
     }
     if (!req.body.email || !req.body.password) {
       res.redirect("/beautylash/users/register");
       //message: error
+      console.log(2);
       return;
     }
     if (req.body.password !== req.body.password_confirm) {
       res.redirect("/beautylash/users/register");
       // error message
+      console.log(3);
       return;
     }
 
@@ -30,13 +32,15 @@ module.exports = {
     try {
       user = await UserModel.findOne({ email: req.body.email });
     } catch (err) {
+      console.log(4);
       console.log(`Finding user... ${err}`);
       res.redirect("/beautylash/users/register");
       return;
     }
     if (user) {
-      res.redirect("/beautylash/users/register");
+      res.redirect("/beautylash/users/login");
       // error message
+      console.log(5);
       return;
     }
     /* ===== validation end ===== */
@@ -48,11 +52,10 @@ module.exports = {
 
     const hashConverter = createHash("sha256");
     hashConverter.update(saltedPassword);
-
+    console.log(6);
     try {
       await UserModel.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        full_name: req.body.full_name,
         email: req.body.email,
         pwsalt: salt,
         hash: hashConverter.digest("hex"),
@@ -68,21 +71,23 @@ module.exports = {
   },
 
   loginForm: (req, res) => {
-    res.render("/beautylash/users/login.ejs");
+    res.render("users/login.ejs");
   },
   loginUser: async (req, res) => {
     // validate if email or password is empty
     if (!req.body.email || !req.body.password) {
       // error message
+      console.log(1);
       res.redirect("/beautylash/users/login");
     }
     // find user with email given
-    let user = null;
+    let user = {};
 
     try {
-      user = await UserModel.find.apply({ email: req.body.email });
+      user = await UserModel.findOne({ email: req.body.email });
     } catch (err) {
       console.log(err);
+      console.log(2);
       res.redirect("/beautylash/users/login");
       return;
     }
@@ -90,9 +95,11 @@ module.exports = {
     if (!user) {
       res.redirect("/beautylash/users/login");
       // recommend to register new user
+      console.log(3);
       return;
     }
-
+    console.log(user);
+    console.log("salt recorded: " + user.hash);
     // User is found, then create the hashed+salted with req.body.password
     const saltedPassword = user.pwsalt + req.body.password;
     const hashConverter = createHash("sha256");
@@ -102,16 +109,18 @@ module.exports = {
     // compare database pw and req.body.password
     if (user.hash !== newHashedPassword) {
       res.redirect("/beautylash/users/login");
+      // print error message
     }
     // everything is nicely correct, then set 'session' and directed to dashboard
-    req.session.user = user;
+    console.log("4 - all correct");
+    // req.session.user = user;
     res.redirect("/beautylash/users/dashboard");
   },
   dashboard: (req, res) => {
-    res.render("/beautylash/users/dashboard.ejs");
+    res.render("users/dashboard.ejs");
   },
   logout: (req, res) => {
-    res.session.destroy();
+    // res.session.destroy();
     res.redirect("/beautylash");
   },
 };

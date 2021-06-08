@@ -1,14 +1,15 @@
 <div class="d-flex flex-column justify-content-center frontpage-container">
       <h2 class="text-center my-5 display-4">Book Your Timing</h2>
       <div class="row justify-content-start">
-            <div id="calendar" class="frontpage-calendar col-10"></div>
-            <div class="col-5">
-                  <h4 class="mb-3 text-center" >Select times on Tue, June 8</h4>
-                  <p class="text-center">Prioritized Location: (e.g. East)</p>
+            <div id="calendar" class="frontpage-calendar col-8 mr-3"></div>
+            <div class="col-6">
+                  <h2>Select times on Tue, June 8</h2>
+                  <p>Prioritized Location: (e.g. East)</p>
                   
                   <table>  
+                        <% for(let i = 0; i < timeslotOption.length; i++){ %>
                               <tr>
-                                    <td class="table-timeslot-td timeslot-option">9am - 10:30pm</td>
+                                    <td class="table-timeslot-td timeslot-option"><%= timeslotOption[i] %></td>
                                     <form method="post" class="nav-link" action="/beautylash/users/dashboard">
                                           <td class="table-timeslot-td">
                                           <select name="treatment" id="area" class="form-select calendar-input-size">
@@ -21,6 +22,9 @@
                                           <td>Not available</td>
                                     </form>
                               </tr>
+                        <% } %>
+                        
+
                         <tr>
                               <td class="table-timeslot-td timeslot-option">11am - 12:30pm</td>
                               <form method="post" class="nav-link" action="/beautylash/users/dashboard">
