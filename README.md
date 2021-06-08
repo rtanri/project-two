@@ -11,6 +11,7 @@ Fully developed web for booking services, customer login and upselling features
 1. Lodash - utility
 1. dotenv - privacy
 1. Moment.js - time converter
+1. Crypto and uuid
 
 ## Page Views
 

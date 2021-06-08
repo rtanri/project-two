@@ -34,7 +34,13 @@ app.get("/", productController.homepage);
 
 /* ========= Routes: User ============ */
 app.get("/beautylash/users/login", userController.loginForm);
+
+app.post("/beautylash/users/login", userController.loginUser);
+
 app.get("/beautylash/users/register", userController.registerForm);
+
+app.post("/beautylash/users/register", userController.registerUser);
+
 app.get("/beautylash/users/profile", userController.dashboard);
 
 /* ========= listener ============ */

@@ -9,15 +9,12 @@ const userSchema = new mongoose.Schema({
     {
       postal: {
         type: String,
-        required: true,
       },
       area: {
         type: String,
-        required: true,
       },
       address: {
         type: String,
-        required: true,
       },
     },
   ],
