@@ -1,0 +1,32 @@
+<div class="d-flex flex-column justify-content-center frontpage-container">
+      <h2 class="text-center my-5 display-4">Book Your Timing</h2>
+      <div class="row justify-content-start">
+            <div id="calendar" class="frontpage-calendar col-10"></div>
+            <div class="col-5" style="margin-left: 20px;">
+                  <h4 class="mb-3 text-center" >Select times on Tue, June 8</h4>
+                  <p class="text-center">Prioritized Location: (e.g. East)</p>
+                  
+                  <table>  
+                        <% for (let i = 0; i < timeslotOptions.length; i++ ) {%>
+                              <tr>
+                                    <td class="table-timeslot-td timeslot-option"><%= timeslotOptions[i] %></td>
+
+                                    <form method="post" class="nav-link" action="/beautylash/users/dashboard">
+
+                                          <td class="table-timeslot-td">
+                                                <%- include("./treatment_list.ejs")  %>
+                                          </td>
+                                          
+                                          <!-- If timeslot is open, show a button -->
+                                          <td class="table-timeslot-td">
+                                                <button type="submit" class="btn btn-success">Book</button>
+                                          </td>
+                                          <!-- else-if timeslot is booked, show not-available -->
+                                          <!-- <td>Not available</td> -->
+                                    </form>
+                              </tr>
+                        <% } %>
+                    </table>           
+            </div>
+      </div>
+</div>

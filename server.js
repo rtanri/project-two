@@ -22,6 +22,8 @@ app.use(express.static("public"));
 /* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
+app.get("/calendar", productController.calendar);
+
 app.get("/beautylash/customers", productController.customers);
 
 app.get("/beautylash/add-post", productController.newPost);

@@ -1,4 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  // additional step: do ajax call to product_controller.js (calendar)
+  // once response return, then we no things below
+  let var1 = await fetch("/calendar").then(response => response.json());
+  // .then(data => console.log(data))
+  // .catch(err => console.log(err));
+  console.log(var1);
+  calendarSetup();
+});
+
+function calendarSetup() {
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialDate: "2021-06-08",
@@ -68,18 +78,4 @@ document.addEventListener("DOMContentLoaded", function () {
     aspectRatio: 1,
   });
   calendar.render();
-});
-
-const timeslotOption = [
-  "9am to 10:30am",
-  "11am to 12:30pm",
-  "1pm to 2:30am",
-  "3pm to 4:30am",
-  "6:30pm to 8pm",
-  "8:30pm to 10pm",
-];
-
-function printTime() {
-  let selectedTd = document.querySelector("#timeslot");
-  selectedTd.innerText = timeslotOption[1];
 }

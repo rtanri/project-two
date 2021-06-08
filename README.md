@@ -21,9 +21,19 @@ Fully developed web for booking services, customer login and upselling features
 
 1. Add New (new.ejs) - to allow customers upload their post-treatment photo to admin for approval to be posted in webpage
 
+1. Register, Login, Dashboard - to help user to have a personal and delightful beautylash membership experience
+
 ## Other Library that I plan to use
 
 1. Stripe - payment gateaway
 1. Captcha or antibot
 
-![mainpage](./public/assets/readme/mainpage.jpg)
+## Attempt to built the webpage
+
+1. Create product pages: views, servers and controllers ![mainpage](./public/assets/readme/mainpage.jpg)
+
+1. Create users page : login, register, dashboard ![dashboard](./public/assets/readme/dashboard.jpg)
+
+1. Connecting FullCalendar library to homepage ![calendar](./public/assets/readme/calendar.jpg)
+
+1. Currently Work on Booking system tagged between dates, timeslot availability and authenticated-user

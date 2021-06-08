@@ -7,40 +7,46 @@ mongoose.set("useCreateIndex", true);
 
 let data = [
   {
-    name: "Jessica",
+    name: "Chelsea",
     service: "Keratin Lashlift",
     category: ["lashlift"],
-    image: "/assets/customers/lashlift-1.jpg",
+    image: "/assets/customers/lashlift-5.jpg",
   },
   {
-    name: "Maria",
+    name: "Sukanya Ize",
     service: "Keratin Lashlift",
     category: ["lashlift"],
-    image: "/assets/customers/lashlift-2.jpg",
+    image: "/assets/customers/lashlift-6.jpg",
   },
   {
-    name: "Kelly",
+    name: "Ploy Chan",
+    service: "Keratin Lashlift",
+    category: ["lashlift"],
+    image: "/assets/customers/lashlift-7.jpg",
+  },
+  {
+    name: "Kim Lee",
     service: "Russian Volume Eyelash Extension",
-    category: ["eyelash extension", "russian volume"],
-    image: "/assets/customers/russian-volume-ext-6.jpg",
+    category: ["russian volume"],
+    image: "/assets/customers/russian-volume-ext-1.jpg",
   },
   {
-    name: "Julia",
-    service: "Keratin Lashlift",
-    category: ["lashlift"],
-    image: "/assets/customers/lashlift-3.jpg",
-  },
-  {
-    name: "Yayoi",
+    name: "Cherrine",
     service: "Skinny Volume Lash Extension",
-    category: ["eyelash extension", "skinny volume"],
-    image: "/assets/customers/skinny-volume-ext-1.jpg",
+    category: ["russian volume"],
+    image: "/assets/customers/russian-volume-ext-2.jpg",
   },
   {
-    name: "Selina",
-    service: "Keratin Lashlift",
-    category: ["lashlift"],
-    image: "/assets/customers/lashlift-4.jpg",
+    name: "Lee Chun Yu",
+    service: "Skinny Volume Lash Extension",
+    category: ["russian volume"],
+    image: "/assets/customers/russian-volume-ext-3.jpg",
+  },
+  {
+    name: "Jaiko",
+    service: "Skinny Volume Lash Extension",
+    category: ["russian volume"],
+    image: "/assets/customers/russian-volume-ext-4.jpg",
   },
 ];
 

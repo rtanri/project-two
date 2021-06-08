@@ -4,7 +4,23 @@ const moment = require("moment");
 
 module.exports = {
   index: (req, res) => {
-    res.render("products/index");
+    // available dates
+    let timeslotOptions = [
+      "9am to 10:30am",
+      "11am to 12:30pm",
+      "1pm to 2:30am",
+      "3pm to 4:30am",
+      "6:30pm to 8pm",
+      "8:30pm to 10pm",
+    ];
+    res.render("products/index", { timeslotOptions });
+  },
+  calendar: (req, res) => {
+    // prepare data to render the calendar events.
+    // focus on current month
+    // res.send() -> data will be in JSON format
+    let obj1 = { name: "hello world" };
+    res.send(obj1);
   },
   customers: async (req, res) => {
     let postings = [];
