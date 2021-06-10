@@ -16,7 +16,7 @@ module.exports = {
     res.render("products/index", { timeslotOptions });
   },
   calendar: (req, res) => {
-    // prepare data to render the calendar events.
+    // prepare data to render the calendar events
     // focus on current month
     // res.send() -> data will be in JSON format
     let obj1 = { name: "hello world" };
