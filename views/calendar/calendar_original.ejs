@@ -8,40 +8,22 @@
             
             <!-- input form -->
             <div class="col-5" style="margin-left: 20px;">
-                  <table class="mb-5 calendar-booking-form">
-                        <tr>
-                              <td><h3 class="my-4">Booking Date: </h3></td>
-                              <td><input 
-                                    type="text" 
-                                    readonly 
-                                    class="form-control-plaintext date-selection" 
-                                    name="date" 
-                                    id="date-selected"
-                              >
-                              </td>
-                        </tr>
-                        <tr style="font-size: 20px;">
-                              <td>Prioritized Location: </td>
-                              <td>East Area</td>
-                        </tr>
-                  </table>                  
+                  <form method="post" action="/beautylash/users/dashboard">
+                  <h4 class="mb-3 text-center" id="title-with-date">
+                        Select Timeslot: <span id="date-selected" name="date"></span>
+                  </h4>
+                  
+                  <p class="text-center">Prioritized Location: East</p>
+                  
                   <table>  
                         <% for (let i = 0; i < timeslotOptions.length; i++ ) {%>
                               <tr>
-                                    <form method="post" action="/calendar-booking" class="calendar-booking-form">
-                                          <td class="table-timeslot-td timeslot-option" >
-                                                <input 
-                                                      type="text" 
-                                                      readonly 
-                                                      class="form-control-plaintext d-none date-selection" 
-                                                      name="date" 
-                                                >
-                                          <input 
-                                                type="text" 
-                                                readonly 
-                                                class="form-control-plaintext timeslot-option" 
-                                                name="timeslot" value="<%= timeslotOptions[i] %>"
+                                          <td 
+                                                class="table-timeslot-td timeslot-option" 
+                                                name="timeslot"
+                                                value="<%= timeslotOptions[i] %>"
                                           >
+                                                <%= timeslotOptions[i] %>
                                           </td>
 
                                           <td class="table-timeslot-td">
@@ -56,7 +38,10 @@
                                           
                                           <!-- If timeslot is open, show a button -->
                                           <td class="table-timeslot-td">
-                                                <button type="submit" class="btn btn-success">
+                                                <button 
+                                                      type="submit" 
+                                                      class="btn btn-success"
+                                                >
                                                       Book
                                                 </button>
                                           </td>

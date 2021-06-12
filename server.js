@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 const productController = require("./controllers/products_controller");
 const userController = require("./controllers/users_controller");
+const bookingController = require("./controllers/booking_controller");
 
 /* ========= database ============ */
 const mongoose = require("mongoose");
@@ -22,7 +23,9 @@ app.use(express.static("public"));
 /* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
-app.get("/calendar", productController.calendar);
+app.post("/calendar-booking", bookingController.calendarBooking);
+
+app.get("/calendar-event", bookingController.calendarEvent);
 
 app.get("/beautylash/customers", productController.customers);
 

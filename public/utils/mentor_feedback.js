@@ -63,6 +63,10 @@ const getAvailableSlotsForTheMonth = arr => {
   return availableSlotsForTheMonth;
 };
 
+/* ================================== */
+/* ======== Start the Flow  ========= */
+/* ================================== */
+
 function startingProcess() {
   return new Promise((resolve, reject) => {
     return resolve("Starting process..");

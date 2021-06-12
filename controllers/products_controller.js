@@ -1,26 +1,14 @@
 const { PostModel } = require("../models/post_model");
+const { BookingModel } = require("../models/booking_model");
 const moment = require("moment");
 // const { customers, Posting } = require("../models/post_model");
 
 module.exports = {
   index: (req, res) => {
     // available dates
-    let timeslotOptions = [
-      "9am to 10:30am",
-      "11am to 12:30pm",
-      "1pm to 2:30am",
-      "3pm to 4:30am",
-      "6:30pm to 8pm",
-      "8:30pm to 10pm",
-    ];
+    let timeslotOptions = ["9am - 11am", "1pm - 3pm", "4pm - 6pm", "7pm - 9pm"];
+
     res.render("products/index", { timeslotOptions });
-  },
-  calendar: (req, res) => {
-    // prepare data to render the calendar events
-    // focus on current month
-    // res.send() -> data will be in JSON format
-    let obj1 = { name: "hello world" };
-    res.send(obj1);
   },
   customers: async (req, res) => {
     let postings = [];
@@ -30,6 +18,7 @@ module.exports = {
       res.statusCode(500);
       return "Server error 500";
     }
+    console.log(postings);
     res.render("products/customers", {
       postings: postings,
     });
@@ -80,3 +69,5 @@ module.exports = {
     });
   },
 };
+
+function modelPayment() {}
