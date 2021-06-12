@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  // additional step: do ajax call to product_controller.js (calendar)
-  // once response return, then we no things below
-  // prettier-ignore
   let getBookingData = await fetch("/calendar-event")
-  .then(response => response.json())
-  .catch(err => console.log(err))
+    .then(response => response.json())
+    .catch(err => console.log(err));
 
   // console.log(typeof getBookingData);
   // console.log(getBookingData);
@@ -173,5 +170,7 @@ let eventList = [
   {
     title: "4 left",
     start: "2021-06-20",
+    display: "",
+    color: "",
   },
 ];

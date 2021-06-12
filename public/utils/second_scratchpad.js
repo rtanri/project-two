@@ -96,7 +96,6 @@ function startFiltering() {
 
 // prettier-ignore
 startFiltering()
-  // res is getCalendarBooking array
   .then(res => {
     console.log("==== 1st then ====")
     return changeDateFormat(res)
