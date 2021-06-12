@@ -46,14 +46,15 @@ function changeDateFormat(arr) {
 
 function filterBookings() {
   changeDateFormat(getCalendarBooking);
+
   for (const newBookingDay of getCalendarBooking) {
     // console.log(bookingDay); // bookingDay exists in object type
 
     bookingForTheMonthJune.forEach(existingBookingDay => {
       // console.log(existingDay); // existingDay exists in object type
-
       // if we cannot find the same date
       if (newBookingDay.date !== existingBookingDay.date) {
+        console.log("nothing match");
         let newDay = {
           date: newBookingDay.date,
           bookings: [
@@ -63,20 +64,25 @@ function filterBookings() {
             },
           ],
         };
-        bookingForTheMonthJune.push(newDay);
+        //   bookingForTheMonthJune.push(newDay);
+        console.log("newDay");
+        console.log(newDay);
+        console.log("==============");
       }
 
       // if we can find the same date
       if (newBookingDay.date === existingBookingDay.date) {
         console.log("it is match");
         //find out if there is same booking,
-        let eachBookingsInExistingDay = existingBookingDay.bookings;
-        eachBookingsInExistingDay.forEach(detail => {
+        //   let eachBookingsInExistingDay = existingBookingDay.bookings;
+
+        existingBookingDay.bookings.forEach(detail => {
           if (detail.timeslot === newBookingDay.timeslot) {
             //  if yes, then cancel the booking and tell user the date has been booked
             console.log("Sorry, the date and time has been booked");
             // delete from array: getCalendarBooking
             // delete data from mongoDB
+            return;
           } else {
             //if not, then push the data
             let newBooking = {
@@ -84,8 +90,9 @@ function filterBookings() {
               treatment: newBookingDay.treatment,
               timeslot: newBookingDay.timeslot,
             };
-            eachBookingsInExistingDay.push(newBooking);
-            console.log(eachBookingsInExistingDay);
+            existingBookingDay.bookings.push(newBooking);
+            console.log(existingBookingDay.bookings);
+            return;
           }
         });
       }
@@ -95,4 +102,50 @@ function filterBookings() {
 }
 
 filterBookings();
-// console.log(bookingForTheMonthJune);
+
+/* Result"
+
+[nodemon] clean exit - waiting for changes before restart
+[nodemon] restarting due to changes...
+[nodemon] starting `node scratchpad.js`
+nothing match
+newDay
+{
+  date: '2021-06-23',
+  bookings: [ { name: 'customer', timeslot: '9am - 11am' } ]
+}
+==============
+nothing match
+newDay
+{
+  date: '2021-06-23',
+  bookings: [ { name: 'customer', timeslot: '9am - 11am' } ]
+}
+==============
+nothing match
+newDay
+{
+  date: '2021-06-23',
+  bookings: [ { name: 'customer', timeslot: '9am - 11am' } ]
+}
+==============
+nothing match
+newDay
+{
+  date: '2021-06-24',
+  bookings: [ { name: 'customer', timeslot: '9am - 11am' } ]
+}
+==============
+nothing match
+newDay
+{
+  date: '2021-06-24',
+  bookings: [ { name: 'customer', timeslot: '9am - 11am' } ]
+}
+==============
+it is match
+[
+  { name: 'Anna', timeslot: '1pm - 3pm' },
+  { name: 'customer', treatment: 'lashlift', timeslot: '9am - 11am' }
+]
+[nodemon] clean exit - waiting for changes before restart
