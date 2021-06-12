@@ -1,50 +1,139 @@
+/* ==================================== */
+/* ======== Collecting data  ========= */
+/* =================================== */
+
 document.addEventListener("DOMContentLoaded", async function () {
   let getBookingData = await fetch("/calendar-event")
     .then(response => response.json())
     .catch(err => console.log(err));
 
-  // console.log(typeof getBookingData);
-  // console.log(getBookingData);
+  // const totalNumOfBooking = creatingNewObj(getBookingData);
 
-  calendarRender(eventList);
+  // const eventList = createEventList(totalNumOfBooking);
+  const totalNumOfBooking = creatingNewObj(getBookingData);
+  const eventList = createEventList(totalNumOfBooking);
+  const dateMap = createDateMap(getBookingData);
+  calendarRender(eventList, dateMap);
 });
+
+function changeDateFormat(arr) {
+  arr.forEach(element => {
+    const newDateFormat = element.date.slice(0, 10);
+    element.date = newDateFormat;
+  });
+  return arr;
+}
+function createDateMap(getBookingData) {
+  const dateMap = new Map();
+  getBookingData.forEach(booking => {
+    if (!dateMap.has(booking.date)) {
+      dateMap.set(booking.date, [booking.timeslot]);
+    } else {
+      dateMap.get(booking.date).push(booking.timeslot);
+    }
+  });
+  return dateMap;
+}
+
+function creatingNewObj(arr) {
+  const formatedDateArr = changeDateFormat(arr);
+  let newObj = {};
+
+  for (const element of formatedDateArr) {
+    if (!newObj[element.date]) {
+      newObj[element.date] = 0;
+    }
+    newObj[element.date]++;
+  }
+  return newObj;
+  // { '2021-06-23': 1, '2021-06-24': 2 }
+}
+
+function createEventList(obj) {
+  let eventListArr = [];
+  for (const date in obj) {
+    const newObject = {
+      title: renderTitle(obj[date]),
+      start: date,
+      display: obj[date] === 4 ? "background" : "",
+      color: obj[date] === 4 ? "red" : "",
+    };
+    eventListArr.push(newObject);
+  }
+  return eventListArr;
+}
+
+function renderTitle(num) {
+  if (num === 4) {
+    return "full";
+  } else {
+    return 4 - num + " left";
+  }
+}
+
+/* ============================================= */
+/* ======== Calendar Render and Event  ========= */
+/* ============================================= */
+
+function calendarRender(dataset, dateMap) {
+  // console.log(getBookingData);
+  // const totalNumOfBooking = creatingNewObj(getBookingData);
+  // const dataset = createEventList(totalNumOfBooking);
+  // const dateMap = new Map();
+  // getBookingData.forEach(booking => {
+  //   if (!dateMap.has(booking.date)) {
+  //     dateMap.set(booking.date, [booking.timeslot]);
+  //   } else {
+  //     dateMap.get(booking.date).push(booking.timeslot);
+  //   }
+  // });
+  // console.log(dateMap);
+  var calendarEl = document.getElementById("calendar");
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: "local",
+    initialView: "dayGridMonth",
+    selectable: true,
+    height: 450,
+    aspectRatio: 1,
+    // click listener
+    dateClick: function (info) {
+      // console.log(info);
+      const dateSelected = document.querySelectorAll("date-selected");
+      dateSelected.innerText = info.dateStr; //string date
+
+      const submitButton = document.querySelectorAll(".timeslot-submit");
+      console.log(submitButton);
+      submitButton.forEach(button => {
+        const hasTakenTimeslots = dateMap.has(info.dateStr);
+        console.log(
+          button.id,
+          hasTakenTimeslots,
+          info.dateStr,
+          dateMap.get(info.dateStr)
+        );
+        if (
+          !hasTakenTimeslots ||
+          !dateMap.get(info.dateStr).includes(button.id)
+        ) {
+          button.disabled = false;
+          button.setAttribute("class", "btn btn-success timeslot-submit");
+        } else {
+          button.disabled = true;
+          button.setAttribute("class", "btn btn-secondary timeslot-submit");
+        }
+      });
+
+      const dateSelection = document.querySelectorAll(".date-selection");
+      dateSelection.forEach(item => item.setAttribute("value", info.dateStr));
+    },
+    events: dataset,
+  });
+  calendar.render();
+}
 
 /* ========================================== */
 /* ======== Calendar Booking setup  ========= */
 /* ========================================== */
-
-let availableSlotsForTheMonth = {
-  "2021-06-01": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-02": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-03": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-04": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-05": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-06": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-07": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-08": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-09": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-10": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-11": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-12": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-13": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-14": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-15": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-16": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-17": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-18": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-19": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-20": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-21": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-22": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-23": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-24": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-25": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-26": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-27": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-28": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-29": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-  "2021-06-30": ["9am-11am", "1pm-3pm", "4pm-6pm", "7pm-9pm"],
-};
 
 let bookingForTheMonthJune = [
   {
@@ -95,82 +184,7 @@ const getAvailableSlotsForTheMonth = arr => {
   return availableSlotsForTheMonth;
 };
 
-/* ============================================= */
-/* ======== Calendar Render and Event  ========= */
-/* ============================================= */
-
-function calendarRender(dataset) {
+function timeslotRender(dataset) {
   // this id: calendar -
-  var calendarEl = document.getElementById("calendar");
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    timeZone: "local",
-    initialView: "dayGridMonth",
-    selectable: true,
-    height: 450,
-    aspectRatio: 1,
-    dateClick: function (info) {
-      const dateSelected = document.querySelectorAll("date-selected");
-      dateSelected.innerText = info.dateStr;
-
-      const dateSelection = document.querySelectorAll(".date-selection");
-      dateSelection.forEach(item => item.setAttribute("value", info.dateStr));
-    },
-    events: dataset,
-  });
-  calendar.render();
+  var timeslotEl = document.getElementById("timeslot-per-date");
 }
-
-function addEvent() {
-  calendar.addEvent(event, [, source]);
-}
-
-let eventList = [
-  {
-    title: "Full",
-    start: "2021-06-06",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "Full",
-    start: "2021-06-09",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "Full",
-    start: "2021-06-10",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "Full",
-    start: "2021-06-11",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "Full",
-    start: "2021-06-14",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "1 left",
-    start: "2021-06-15",
-  },
-  {
-    title: "1 left",
-    start: "2021-06-16",
-  },
-  {
-    title: "5 left",
-    start: "2021-06-19",
-  },
-  {
-    title: "4 left",
-    start: "2021-06-20",
-    display: "",
-    color: "",
-  },
-];

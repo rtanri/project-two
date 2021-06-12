@@ -27,6 +27,8 @@ app.post("/calendar-booking", bookingController.calendarBooking);
 
 app.get("/calendar-event", bookingController.calendarEvent);
 
+// app.get("/timeslot-available", bookingController.bookingTimeslot);
+
 app.get("/beautylash/customers", productController.customers);
 
 app.get("/beautylash/add-post", productController.newPost);

@@ -24,8 +24,11 @@
                               <td>Prioritized Location: </td>
                               <td>East Area</td>
                         </tr>
-                  </table>                  
-                  <table>  
+                  </table>         
+                  
+                  
+                  <table id="timeslot-per-date">  
+                        
                         <% for (let i = 0; i < timeslotOptions.length; i++ ) {%>
                               <tr>
                                     <form method="post" action="/calendar-booking" class="calendar-booking-form">
@@ -51,17 +54,16 @@
                                                       <option value="russian volume">Russian Volume Eyelash Extension</option>
                                                       <option value="skinny volume">Skinny Volume Eyelash Extension</option>
                                                 </select>
-                                                <!-- <%- include("./treatment_list.ejs")  %> -->
                                           </td>
                                           
                                           <!-- If timeslot is open, show a button -->
                                           <td class="table-timeslot-td">
-                                                <button type="submit" class="btn btn-success">
+                                                <button type="submit" class="btn btn-success timeslot-submit" id="<%= timeslotOptions[i] %>">
                                                       Book
                                                 </button>
                                           </td>
                                           <!-- else-if timeslot is booked, show not-available -->
-                                          <!-- <td>Not available</td> -->
+                                          <!-- <td><p>Not available</p></td> -->
                                     </form>
                               </tr>
                         <% } %>
@@ -69,3 +71,4 @@
             </div>
       </div>
 </div>
+

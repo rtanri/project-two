@@ -41,15 +41,6 @@ let getCalendarBooking = [
   },
 ];
 
-function changeDateFormat(arr) {
-  arr.forEach(element => {
-    const newDateFormat = element.date.slice(0, 10);
-    element.date = newDateFormat;
-  });
-  //   console.log(arr);
-  return arr;
-}
-
 function creatingNewObj(arr) {
   const formatedDateArr = changeDateFormat(arr);
   let newObj = {};
@@ -90,17 +81,61 @@ function renderTitle(num) {
   }
 }
 
-let eventList = [
-  {
-    title: "Full",
-    start: "2021-06-06",
-    display: "background",
-    color: "red",
-  },
-  {
-    title: "Full",
-    start: "2021-06-09",
-    display: "background",
-    color: "red",
-  },
-];
+function changeDateFormat(arr) {
+  arr.forEach(element => {
+    const newDateFormat = element.date.slice(0, 10);
+    element.date = newDateFormat;
+  });
+  return arr;
+}
+
+// let eventList = [
+//   {
+//     title: "Full",
+//     start: "2021-06-06",
+//     display: "background",
+//     color: "red",
+//   },
+//   {
+//     title: "Full",
+//     start: "2021-06-09",
+//     display: "background",
+//     color: "red",
+//   },
+//   {
+//     title: "Full",
+//     start: "2021-06-10",
+//     display: "background",
+//     color: "red",
+//   },
+//   {
+//     title: "Full",
+//     start: "2021-06-11",
+//     display: "background",
+//     color: "red",
+//   },
+//   {
+//     title: "Full",
+//     start: "2021-06-14",
+//     display: "background",
+//     color: "red",
+//   },
+//   {
+//     title: "1 left",
+//     start: "2021-06-15",
+//   },
+//   {
+//     title: "1 left",
+//     start: "2021-06-16",
+//   },
+//   {
+//     title: "5 left",
+//     start: "2021-06-19",
+//   },
+//   {
+//     title: "4 left",
+//     start: "2021-06-20",
+//     display: "",
+//     color: "",
+//   },
+// ];

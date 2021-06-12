@@ -35,11 +35,6 @@ module.exports = {
         return;
       }
     });
-
-    // let obj1 = { name: "hello world" };
-    // res.send(obj1);
-    // prepare data to render the calendar events
-    // res.send() -> data will be in JSON format
   },
   calendarEvent: async (req, res) => {
     let bookingForTheMonthJune = [];
