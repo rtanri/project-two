@@ -1,4 +1,4 @@
-/* ==================================== */
+/* =================================== */
 /* ======== Collecting data  ========= */
 /* =================================== */
 
@@ -7,12 +7,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     .then(response => response.json())
     .catch(err => console.log(err));
 
-  // const totalNumOfBooking = creatingNewObj(getBookingData);
-
-  // const eventList = createEventList(totalNumOfBooking);
   const totalNumOfBooking = creatingNewObj(getBookingData);
   const eventList = createEventList(totalNumOfBooking);
   const dateMap = createDateMap(getBookingData);
+
   calendarRender(eventList, dateMap);
 });
 
@@ -23,6 +21,7 @@ function changeDateFormat(arr) {
   });
   return arr;
 }
+
 function createDateMap(getBookingData) {
   const dateMap = new Map();
   getBookingData.forEach(booking => {
@@ -76,18 +75,6 @@ function renderTitle(num) {
 /* ============================================= */
 
 function calendarRender(dataset, dateMap) {
-  // console.log(getBookingData);
-  // const totalNumOfBooking = creatingNewObj(getBookingData);
-  // const dataset = createEventList(totalNumOfBooking);
-  // const dateMap = new Map();
-  // getBookingData.forEach(booking => {
-  //   if (!dateMap.has(booking.date)) {
-  //     dateMap.set(booking.date, [booking.timeslot]);
-  //   } else {
-  //     dateMap.get(booking.date).push(booking.timeslot);
-  //   }
-  // });
-  // console.log(dateMap);
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     timeZone: "local",
@@ -97,30 +84,42 @@ function calendarRender(dataset, dateMap) {
     aspectRatio: 1,
     // click listener
     dateClick: function (info) {
-      // console.log(info);
-      const dateSelected = document.querySelectorAll("date-selected");
-      dateSelected.innerText = info.dateStr; //string date
+      // console.log(info) // print an event detail
+      const dateSelected = document.getElementById("date-selected");
+      dateSelected.innerText = info.dateStr;
 
       const submitButton = document.querySelectorAll(".timeslot-submit");
-      console.log(submitButton);
+      // console.log(submitButton);
+
+      const dropdownOption = document.querySelectorAll(".treatment-dropdown");
+      const availability = document.querySelectorAll(".not-available");
+
       submitButton.forEach(button => {
-        const hasTakenTimeslots = dateMap.has(info.dateStr);
-        console.log(
-          button.id,
-          hasTakenTimeslots,
-          info.dateStr,
-          dateMap.get(info.dateStr)
+        replaceClass(
+          button,
+          "btn btn-success timeslot-submit",
+          "btn btn-secondary timeslot-submit",
+          dateMap,
+          info
         );
-        if (
-          !hasTakenTimeslots ||
-          !dateMap.get(info.dateStr).includes(button.id)
-        ) {
-          button.disabled = false;
-          button.setAttribute("class", "btn btn-success timeslot-submit");
-        } else {
-          button.disabled = true;
-          button.setAttribute("class", "btn btn-secondary timeslot-submit");
-        }
+      });
+      dropdownOption.forEach(dropdown => {
+        replaceClass(
+          dropdown,
+          "form-select calendar-input-size treatment-dropdown",
+          "d-none treatment-dropdown",
+          dateMap,
+          info
+        );
+      });
+      availability.forEach(message => {
+        replaceClass(
+          message,
+          "not-available d-none",
+          "not-available form-control-plaintext timeslot-option",
+          dateMap,
+          info
+        );
       });
 
       const dateSelection = document.querySelectorAll(".date-selection");
@@ -130,6 +129,23 @@ function calendarRender(dataset, dateMap) {
   });
   calendar.render();
 }
+
+const replaceClass = (element, existingClass, newClass, dateMap, info) => {
+  const hasTakenTimeslots = dateMap.has(info.dateStr);
+  console.log(
+    element.id,
+    hasTakenTimeslots,
+    info.dateStr,
+    dateMap.get(info.dateStr)
+  );
+  if (!hasTakenTimeslots || !dateMap.get(info.dateStr).includes(element.id)) {
+    element.disabled = false;
+    element.setAttribute("class", existingClass);
+  } else {
+    element.disabled = true;
+    element.setAttribute("class", newClass);
+  }
+};
 
 /* ========================================== */
 /* ======== Calendar Booking setup  ========= */
@@ -183,8 +199,3 @@ const getAvailableSlotsForTheMonth = arr => {
   });
   return availableSlotsForTheMonth;
 };
-
-function timeslotRender(dataset) {
-  // this id: calendar -
-  var timeslotEl = document.getElementById("timeslot-per-date");
-}

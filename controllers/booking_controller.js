@@ -44,8 +44,6 @@ module.exports = {
       res.statusCode(500);
       return "Server error 500";
     }
-    // after we got all the booking data
-    //     console.log(bookingForTheMonthJune);
     res.send(bookingForTheMonthJune);
   },
 };
