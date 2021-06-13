@@ -54,8 +54,8 @@ function createEventList(obj) {
     const newObject = {
       title: renderTitle(obj[date]),
       start: date,
-      display: obj[date] === 4 ? "background" : "",
-      color: obj[date] === 4 ? "red" : "",
+      display: obj[date] >= 4 ? "background" : "",
+      color: obj[date] >= 4 ? "red" : "",
     };
     eventListArr.push(newObject);
   }
@@ -63,7 +63,7 @@ function createEventList(obj) {
 }
 
 function renderTitle(num) {
-  if (num === 4) {
+  if (num === 4 || num > 4) {
     return "full";
   } else {
     return 4 - num + " left";
