@@ -93,6 +93,7 @@ function calendarRender(dataset, dateMap) {
 
       const dropdownOption = document.querySelectorAll(".treatment-dropdown");
       const availability = document.querySelectorAll(".not-available");
+      const loginLink = document.querySelectorAll(".ask-to-login");
 
       submitButton.forEach(button => {
         replaceClass(
@@ -117,6 +118,15 @@ function calendarRender(dataset, dateMap) {
           message,
           "not-available d-none",
           "not-available form-control-plaintext timeslot-option",
+          dateMap,
+          info
+        );
+      });
+      loginLink.forEach(link => {
+        replaceClass(
+          link,
+          "ask-to-login",
+          "ask-to-login d-none",
           dateMap,
           info
         );

@@ -1,5 +1,6 @@
 const { PostModel } = require("../models/post_model");
 const moment = require("moment");
+const _ = require("lodash");
 // const { customers, Posting } = require("../models/post_model");
 
 module.exports = {
@@ -24,15 +25,17 @@ module.exports = {
       postings: postings,
     });
   },
-  newPost: (req, res) => {
-    res.render("products/new");
-  },
+  // newPost: (req, res) => {
+  //   res.render("products/new");
+  // },
   createPost: (req, res) => {
     console.log(req.body);
 
     const timestampNow = moment().utc();
     console.log(1);
+    createdSlug = _.kebabCase(req.body.service);
     PostModel.create({
+      slug: createdSlug,
       name: req.body.name,
       service: req.body.service,
       category: req.body.category,
@@ -40,13 +43,13 @@ module.exports = {
       created_at: timestampNow,
     })
       .then(createResp => {
-        console.log(2);
-        res.redirect("/beautylash/customers");
+        console.log("2 - Post successful");
+        res.redirect("/beautylash/users/dashboard");
       })
       .catch(err => {
-        console.log(3);
+        console.log("3 - Post failed");
         console.log(err);
-        res.redirect("/beautylash/add-post");
+        res.redirect("/beautylash/users/dashboard");
       });
   },
   homepage: (req, res) => {

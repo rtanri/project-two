@@ -3,6 +3,10 @@ body {
   color: white;
 }
 
+.navbar-width {
+  max-width: 1100px;
+}
+
 .frontpage-banner {
   width: 100%;
 }
@@ -68,6 +72,21 @@ label {
   min-width: 380px;
 }
 
+.ask-to-login {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+}
+
+.ask-to-login:hover {
+  color: darkgrey;
+}
+
+.smallInstruction {
+  font-size: 14px;
+}
+
 /* ======= Calendar End ======= */
 
 /* ======= Carousel ======= */
@@ -105,9 +124,29 @@ label {
 }
 
 .timeslot-option {
-  min-width: 150px;
+  min-width: 130px;
+  max-width: 150px;
   color: white;
   font-size: 22px;
+}
+
+/* dashboard */
+.dashboard-width {
+  min-width: 900px;
+}
+
+.utility-box {
+  border: 2px solid white;
+  padding: 20px;
+}
+
+.table-booking-td {
+  min-width: 150px;
+  padding: 10px;
+}
+.table-title {
+  font-size: larger;
+  font-weight: 700;
 }
 
 /* 

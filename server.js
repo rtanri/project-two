@@ -31,7 +31,7 @@ app.use(
     name: "user_session",
     resave: false,
     saveUninitialized: false, // need for login session
-    cookie: { path: "/", secure: false, maxAge: 3600000 },
+    cookie: { path: "/", secure: false, maxAge: 7200000 },
   })
 );
 app.use(setUserVarMiddleware);
@@ -45,7 +45,7 @@ app.get("/calendar-event", bookingController.calendarEvent);
 
 app.get("/beautylash/customers", productController.customers);
 
-app.get("/beautylash/add-post", productController.newPost);
+// app.get("/beautylash/add-post", productController.newPost);
 
 app.post("/beautylash/add-post", productController.createPost);
 
@@ -83,6 +83,8 @@ app.get(
   authenticatedOnlyMiddleware,
   userController.dashboard
 );
+
+// app.get("/beautylash/users/address", userController.addressForm);
 
 /* ========= listener ============ */
 

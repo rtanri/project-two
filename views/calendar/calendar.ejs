@@ -8,7 +8,7 @@
             
             <!-- input form -->
             <div class="col-5" style="margin-left: 20px;">
-                  <table class="mb-5 calendar-booking-form">
+                  <table class="mb-3 calendar-booking-form">
                         <tr>
                               <td><h3 class="my-4">Booking Date: </h3></td>
                               <td><input 
@@ -25,8 +25,7 @@
                               <td>East Area</td>
                         </tr>
                   </table>         
-                  
-                  
+                  <hr>
                   <table id="timeslot-per-date">  
                         
                         <% for (let i = 0; i < timeslotOptions.length; i++ ) {%>
@@ -46,7 +45,7 @@
                                                 name="timeslot" value="<%= timeslotOptions[i] %>"
                                           >
                                           </td>
-
+                                          
                                           <td class="table-timeslot-td">
                                                 <select name="treatment" id="<%= timeslotOptions[i] %>" class="form-select calendar-input-size treatment-dropdown">
                                                       <option value="" selected>Select here</option>
@@ -56,20 +55,32 @@
                                                 </select>
                                                 <p class="not-available d-none" id="<%= timeslotOptions[i] %>">Not Available</p>
                                           </td>
-                                          
+                                          <% if (user) { %>
                                           <!-- If timeslot is open, show a button -->
                                           <td class="table-timeslot-td">
                                                 <button type="submit" class="btn btn-success timeslot-submit" id="<%= timeslotOptions[i] %>">
                                                       Book
                                                 </button>
                                           </td>
-                                          <!-- else-if timeslot is booked, show not-available -->
-                                          <!-- <td><p>Not available</p></td> -->
+                                          <% } else {%>
+                                          <td>
+                                                <a 
+                                                      href="/beautylash/users/login" class="ask-to-login" 
+                                                      id="<%= timeslotOptions[i] %>"
+                                                      >Login
+                                                </a>
+                                          </td>
+                                          <% } %>
                                     </form>
                               </tr>
                         <% } %>
-                    </table>           
+                    </table>  
+                    <% if (!user) { %>  
+                    <p class="smallInstruction text-center mt-4">*Please login to book your eyelash treatments</p>  
+                    <% } %>     
             </div>
+            <!-- input form ended -->
+
       </div>
 </div>
 
