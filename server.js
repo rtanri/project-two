@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = 3000;
+const methodOverride = require("method-override");
+
 const productController = require("./controllers/products_controller");
 const userController = require("./controllers/users_controller");
 const bookingController = require("./controllers/booking_controller");
@@ -25,6 +27,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -39,19 +42,13 @@ app.use(setUserVarMiddleware);
 /* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
-app.post("/calendar-booking", bookingController.calendarBooking);
-
-app.get("/calendar-event", bookingController.calendarEvent);
+// app.get("/beautylash/customers/:id", productController.show);
 
 app.get("/beautylash/customers", productController.customers);
 
-// app.get("/beautylash/add-post", productController.newPost);
-
 app.post("/beautylash/add-post", productController.createPost);
 
-app.get("/beautylash/:slug", productController.show);
-
-app.get("/", productController.homepage);
+// app.get("/beautylash/users/address", userController.addressForm);
 
 /* ========= Routes: User ============ */
 app.get(
@@ -84,7 +81,15 @@ app.get(
   userController.dashboard
 );
 
-// app.get("/beautylash/users/address", userController.addressForm);
+/* ========= Routes: Bookings ============ */
+
+app.post("/calendar-booking", bookingController.calendarBooking);
+
+app.get("/calendar-event", bookingController.calendarEvent);
+
+app.delete("/delete-booking", bookingController.deleteBooking);
+
+app.get("/", productController.homepage);
 
 /* ========= listener ============ */
 

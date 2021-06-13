@@ -1,9 +1,12 @@
 const { BookingModel } = require("../models/booking_model");
+const { UserModel } = require("../models/user_model");
 const moment = require("moment");
 
 module.exports = {
   calendarBooking: (req, res) => {
     const timestampNow = moment().utc();
+    const loginUser = req.session.user;
+
     console.log(1);
     // validation
     BookingModel.find({
@@ -16,11 +19,12 @@ module.exports = {
           date: req.body.date,
           timeslot: req.body.timeslot,
           treatment: req.body.treatment,
+          customer_email: loginUser.email,
           created_at: timestampNow,
         })
           .then(resp => {
             console.log(2);
-            res.redirect("/beautylash/users/dashboard");
+            res.redirect("/beautylash/");
             return;
           })
           .catch(err => {
@@ -45,5 +49,17 @@ module.exports = {
       return "Server error 500";
     }
     res.send(bookingForTheMonthJune);
+  },
+  deleteBooking: (req, res) => {
+    BookingModel.deleteOne({ _id: req.body.bookingId })
+      .then(resp => {
+        res.redirect("/beautylash/users/dashboard");
+        return;
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/beautylash/users/dashboard");
+        return;
+      });
   },
 };

@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema({
   ],
   created_at: { type: Date },
   liked_post: [{ type: String }],
-  upcoming_booking: [{ type: Date }],
-  past_booking: [{ type: Date }],
+  upcoming_booking: [{ type: String }],
+  past_booking: [{ type: String }],
 });
 
 const UserModel = mongoose.model("user", userSchema);

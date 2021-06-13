@@ -1,4 +1,7 @@
 const { UserModel } = require("../models/user_model");
+const { PostModel } = require("../models/post_model");
+const { BookingModel } = require("../models/booking_model");
+
 const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
 const { createHash } = require("crypto");
@@ -68,6 +71,7 @@ module.exports = {
     }
     // everything is correct and nicely done, and then directed to dashboard
     res.redirect("/beautylash/users/dashboard");
+    return;
   },
 
   loginForm: (req, res) => {
@@ -79,6 +83,7 @@ module.exports = {
       // error message
       console.log(1);
       res.redirect("/beautylash/users/login");
+      return;
     }
     // find user with email given
     let user = {};
@@ -93,9 +98,9 @@ module.exports = {
     }
 
     if (!user) {
+      console.log(3);
       res.redirect("/beautylash/users/login");
       // recommend to register new user
-      console.log(3);
       return;
     }
     console.log(user);
@@ -109,18 +114,45 @@ module.exports = {
     // compare database pw and req.body.password
     if (user.hash !== newHashedPassword) {
       res.redirect("/beautylash/users/login");
+      return;
       // print error message
     }
     // everything is nicely correct, then set 'session' and directed to dashboard
     console.log("4 - all correct");
     req.session.user = user;
     res.redirect("/beautylash/users/dashboard");
+    return;
   },
-  dashboard: (req, res) => {
-    res.render("users/dashboard.ejs");
+  dashboard: async (req, res) => {
+    let loginUser = req.session.user;
+    let allBookings = [];
+
+    try {
+      allBookings = await BookingModel.find({
+        customer_email: loginUser.email,
+      }).sort({ date: 1 });
+    } catch (err) {
+      res.statusCode(500);
+      console.log("cannot find any booking");
+      return "Server error 500";
+    }
+
+    allBookings.forEach(element => {
+      const dateInMoment = moment(element.date);
+      const newFormat = dateInMoment.format("DD/MM/YYYY");
+      element.formattedDate = newFormat;
+      return;
+    });
+
+    console.log("inside allBookings:");
+    console.log(allBookings);
+    console.log("==================");
+
+    res.render("users/dashboard.ejs", { allBookings, loginUser });
   },
   logout: (req, res) => {
     req.session.destroy();
     res.redirect("/beautylash");
+    return;
   },
 };

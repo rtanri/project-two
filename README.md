@@ -36,4 +36,4 @@ Fully developed web for booking services, customer login and upselling features
 
 1. Connecting FullCalendar library to homepage ![calendar](./public/assets/readme/calendar.jpg)
 
-1. Currently Work on Booking system tagged between dates, timeslot availability and authenticated-user
+1. Booking system connected with each user email - sorted based on dates and able to be deleted in dashboard ![dashboard-one](./public/assets/readme/dashboard-view-one.jpg)

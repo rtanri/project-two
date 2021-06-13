@@ -24,12 +24,32 @@ body {
 .frontpage-button {
   background-color: #e6c4c0;
   width: fit-content;
-  color: black;
+  color: #3d4246;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.frontpage-button:hover {
+  background-color: palevioletred;
 }
 
 .instagram-post {
   max-width: 350px;
   max-height: 350px;
+}
+
+.customerPage-button {
+  width: 350px;
+  background-color: #e6c4c0;
+  color: #3d4246;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-weight: 700;
+}
+
+.customerPage-button:hover {
+  background-color: palevioletred;
 }
 
 label {
@@ -130,14 +150,25 @@ label {
   font-size: 22px;
 }
 
-/* dashboard */
+/* ===== dashboard ===== */
 .dashboard-width {
-  min-width: 900px;
+  min-width: 1200px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.booking-box {
+  border: 2px solid white;
+  padding: 20px;
+  min-width: 600px;
+  max-width: 640px;
+  margin-right: 20px;
 }
 
 .utility-box {
   border: 2px solid white;
   padding: 20px;
+  max-width: 450px;
 }
 
 .table-booking-td {
@@ -147,6 +178,14 @@ label {
 .table-title {
   font-size: larger;
   font-weight: 700;
+}
+
+.cancel-button {
+  margin-top: 0;
+  font-size: 14px;
+  margin-bottom: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* 
