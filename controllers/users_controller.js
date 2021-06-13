@@ -113,14 +113,14 @@ module.exports = {
     }
     // everything is nicely correct, then set 'session' and directed to dashboard
     console.log("4 - all correct");
-    // req.session.user = user;
+    req.session.user = user;
     res.redirect("/beautylash/users/dashboard");
   },
   dashboard: (req, res) => {
     res.render("users/dashboard.ejs");
   },
   logout: (req, res) => {
-    // res.session.destroy();
+    req.session.destroy();
     res.redirect("/beautylash");
   },
 };

@@ -31,18 +31,25 @@
             </ul>
             
             <ul class="d-flex navbar-nav">
+                  <% if(!user) {%>
+
                   <li class="nav-item">
                         <a class="nav-link" href="/beautylash/users/login">Login</a>
                   </li>
                   <li class="nav-item">
                         <a class="nav-link" href="/beautylash/users/register">Register</a>
                   </li>
+
+                  <% } else { %>
+
                   <li class="nav-item">
                         <a class="nav-link" href="/beautylash/users/dashboard">Dashboard</a>
                   </li>
                   <li class="nav-item">
                         <a class="nav-link" href="/beautylash">Logout</a>
                   </li>
+
+                  <% } %>
             </ul>
             </div>
             </div>
