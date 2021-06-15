@@ -155,4 +155,7 @@ module.exports = {
     res.redirect("/beautylash");
     return;
   },
+  combinedForm: (req, res) => {
+    res.render("users/combined_login_register.ejs");
+  },
 };

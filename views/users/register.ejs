@@ -1,8 +1,6 @@
-<%- include('../partials/head') %>
-
-<div class="container my-5 d-flex flex-column align-items-center">
+<div class="container mb-5 d-flex flex-column align-items-center register-box">
+  <h1 class="text-center mb-5">Register new account</h1>
   <form method="POST" action="/beautylash/users/register">
-
     <div class="mb-3">
       <label for="full_name" class="form-label form-input-size">Full Name</label>
       <input type="text" class="form-control form-input-size" id="full_name" name="full_name"
@@ -33,4 +31,3 @@
 </form>
 </div>
 
-<%- include('../partials/foot') %>

@@ -43,18 +43,26 @@ app.use(setUserVarMiddleware);
 /* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
+// show
 app.get("/beautylash/customers/:id", productController.show);
 
 app.get("/beautylash/customers", productController.customers);
 
+// create
 app.post(
   "/beautylash/customers-with-filter",
   productController.customersWithFilter
 );
 
+// create
 app.post("/beautylash/add-post", productController.createPost);
 
 /* ========= Routes: User ============ */
+app.get(
+  "/beautylash/users/user-sign-in",
+  guestOnlyMiddleware,
+  userController.combinedForm
+);
 app.get(
   "/beautylash/users/login",
   guestOnlyMiddleware,

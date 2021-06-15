@@ -1,11 +1,11 @@
 <div class="container d-flex flex-column align-items-center">
-      <h2 class="mb-4">Upload New Photo</h2>
+      <h2 class="mb-4">My Profile</h2>
 
       <form method="post" action="/beautylash/add-post" >
             <%- include('../partials/input', { name: 'name', placeholder: 'Jessica'})  %>
-            <%- include('../partials/input', { name: 'service', placeholder: "Russian Volume Extension"})  %>
+            <%- include('../partials/input', { name: 'Address', placeholder: "GEL Lashlift"})  %>
 
-            <%- include('../partials/input', { name: 'image', placeholder: "image url"})  %>
+            <%- include('../partials/input', { name: 'image', placeholder: "upload your image"})  %>
             <div class="d-flex flex-row justify-content-center mt-5">
                   <button type="submit" class="btn btn-primary">Submit</button>
             </div>

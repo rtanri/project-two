@@ -1,50 +1,50 @@
 <%- include('../partials/head') %>
 
-<div class="container my-5">
+<div class="my-5">
       <h1 class="text-center display-4">Welcome to Beautylash</h1>
       <h4 class="text-center mb-5"><%= loginUser.full_name %></h4>
-
-      <div class="container my-3 d-flex flex-column align-items-center">
-            <div class="row justify-content-center mb-5 dashboard-width">
-                  <div class="col-6 booking-box">
-                        <h2 class="mb-4 text-center">Upcoming appointment</h2>
-                        <table class="mb-3">
-                              <tr class="mb-3 table-title">
-                                    <td class="table-booking-td">Date</td>
-                                    <td class="table-booking-td">Time</td>
-                                    <td class="table-booking-td">Treatment</td>
-                                    <td class=""></td>
-                              </tr>
-                              <% allBookings.forEach(booking => { %>
-                              <tr class="mb-3" style="font-size: 16px;">
-                                    <td class="table-booking-td"><%= booking.formattedDate %></td>
-                                    <td class="table-booking-td"><%= booking.timeslot %></td>
-                                    <td class="table-booking-td"><%= booking.treatment %></td>
-                                    <td class="">
-                                          <form method="post" action="/delete-booking?_method=DELETE" style="margin-bottom: 0;">
-                                                <input 
-                                                type="text" 
-                                                readonly 
-                                                class="d-none" 
-                                                name="bookingId" value="<%= booking._id %>"
-                                          >
-                                                <button class="btn btn-danger cancel-button">X</button>
-                                          </form>
-                                    </td>
-                              </tr>
-                              <% }) %>
-
-                        </table>         
-                  </div>
+            <div class="container my-4 d-flex justify-content-center" style="max-width: 900px; padding-left: 0; padding-right: 0;">
+                  <div class="col-5 utility-box margin-right">
+                        <%- include('../products/profile.ejs') %>
+                  </div>                  
                   <div class="col-5 utility-box">
                         <%- include('../products/new.ejs') %>
                   </div>
-            </div>     
-            <!-- <div class="my-5">
-                  <h2>The Post You Liked</h2>
+            </div>
 
-            </div>  -->
-      </div>
+            <div class="d-flex flex-column mb-5 justify-content-center booking-box">
+                  
+                  <h2 class="mb-4 text-center">Upcoming appointment</h2>
+
+                  <table class="mb-3">
+                        <tr class="mb-3 table-title">
+                              <td class="table-booking-td">Date</td>
+                              <td class="table-booking-td">Time</td>
+                              <td class="table-booking-td">Treatment</td>
+                              <td class=""></td>
+                        </tr>
+                        <% allBookings.forEach(booking => { %>
+                        <tr class="mb-3" style="font-size: 16px;">
+                              <td class="table-booking-td"><%= booking.formattedDate %></td>
+                              <td class="table-booking-td"><%= booking.timeslot %></td>
+                              <td class="table-booking-td"><%= booking.treatment %></td>
+                              <td class="">
+                                    <form method="post" action="/delete-booking?_method=DELETE" style="margin-bottom: 0;">
+                                          <input 
+                                          type="text" 
+                                          readonly 
+                                          class="d-none" 
+                                          name="bookingId" value="<%= booking._id %>"
+                                    >
+                                          <button class="btn btn-danger cancel-button">X</button>
+                                    </form>
+                              </td>
+                        </tr>
+                        <% }) %>
+                  </table>         
+            </div> 
+
+       
 </div>
 
 <%- include('../partials/foot') %>

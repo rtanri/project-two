@@ -6,6 +6,9 @@ const userSchema = new mongoose.Schema({
   pwsalt: { type: String },
   hash: { type: String, required: true },
   created_at: { type: Date },
+  contact_number: { type: String },
+  address: { type: String },
+  postal_code: { type: String },
 });
 
 const UserModel = mongoose.model("user", userSchema);

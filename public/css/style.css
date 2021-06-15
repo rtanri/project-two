@@ -154,25 +154,36 @@ label {
   font-size: 22px;
 }
 
-/* ===== dashboard ===== */
-.dashboard-width {
-  min-width: 1200px;
-  padding-left: 0;
-  padding-right: 0;
+.register-page-width {
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
+.register-box {
+  border-right: 1px solid #eaeaea;
+}
+
+.login-box {
+  border-left: 1px solid #eaeaea;
+}
+
+/* ===== dashboard ===== */
 
 .booking-box {
   border: 2px solid white;
-  padding: 20px;
-  min-width: 600px;
-  max-width: 640px;
+  padding: 20px 90px;
+  min-width: 700px;
+  max-width: 800px;
   margin-right: 20px;
+  margin: 10px auto;
+  min-width: 750px;
 }
 
 .utility-box {
   border: 2px solid white;
   padding: 20px;
-  max-width: 450px;
+  min-width: 380px;
+  max-width: 500px;
 }
 
 .table-booking-td {
