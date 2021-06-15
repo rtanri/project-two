@@ -39,6 +39,10 @@ body {
   max-height: 350px;
 }
 
+.margin-right {
+  margin-right: 20px;
+}
+
 .customerPage-button {
   width: 350px;
   background-color: #e6c4c0;
@@ -196,18 +200,18 @@ label {
   margin-right: 50px;
 }
 
-.comment-panel-div {
-  min-width: 400px;
+.detail-panel-div {
+  max-width: 500px;
+  height: 450px;
 }
 
-.comment-label {
-  font-size: 20px;
+.product-info {
+  min-height: 300px;
 }
 
-.like-status {
-  font-size: 20px;
-  margin-left: 20px;
-  padding-top: 3px;
+.product-info-seperator {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* 

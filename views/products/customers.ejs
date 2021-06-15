@@ -1,24 +1,27 @@
 <%- include('../partials/head') %>
 
 <div class="container mt-5 mb-5">
-      <h1 class="text-center mb-5">Customers in Instagram</h1>
-      <div class="d-flex justify-content-center flex-wrap">
+      <h1 class="text-center mb-3 display-4">Customers in Instagram</h1>
+
+      <form method="post" action="/beautylash/customers-with-filter">
+      <div class="d-flex bd-highlight mb-5 justify-content-center">
+            
+                  <span class="margin-right" style="font-size: 24px;">Show Only: </span>
+                  <select name="category" class="margin-right form-select calendar-input-size">
+                        <option value="" selected>Select here</option>
+                        <option value="Lash Lift">Lash Lift</option>
+                        <option value="Russian Volume">Russian Volume</option>
+                        <option value="Skinny Volume">Skinny Volume</option>
+                        <option value="Show All">Show All</option>
+                  </select>
+                  <button type="submit" class="btn btn-success margin-right">
+                        Find
+                  </button>
+      </div>
+      </form> 
+      <div class="d-flex justify-content-center flex-wrap mt-5">
             <% postings.forEach(element => { %> 
                   <a href="/beautylash/customers/<%= element._id %>"><img src="<%= element.image %>" class="instagram-post mx-2 mb-3 border"></a>
-                              
-                              <!-- <form method="post" action="/post-like?_method=PATCH " >
-                                    <input 
-                                          type="text" readonly 
-                                          class="d-none" 
-                                          name="liked" value="<%= element._id %>"
-                                    >
-                                    <p class="like-status status-style d-none">
-                                          You liked this photo
-                                    </p>
-
-                                    <button class="btn btn-secondary customerPage-button mx-2 mb-3">Like</button>
-
-                              </form> -->
             <% }) %>
         </div>
 

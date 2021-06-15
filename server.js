@@ -9,7 +9,6 @@ const methodOverride = require("method-override");
 const productController = require("./controllers/products_controller");
 const userController = require("./controllers/users_controller");
 const bookingController = require("./controllers/booking_controller");
-const commentController = require("./controllers/comments_controller");
 const session = require("express-session");
 const {
   authenticatedOnly: authenticatedOnlyMiddleware,
@@ -49,20 +48,11 @@ app.get("/beautylash/customers/:id", productController.show);
 app.get("/beautylash/customers", productController.customers);
 
 app.post(
-  "/post-like",
-  authenticatedOnlyMiddleware,
-  commentController.createLike
-);
-
-app.post(
-  "/post-comment",
-  authenticatedOnlyMiddleware,
-  commentController.createComment
+  "/beautylash/customers-with-filter",
+  productController.customersWithFilter
 );
 
 app.post("/beautylash/add-post", productController.createPost);
-
-// app.get("/beautylash/users/address", userController.addressForm);
 
 /* ========= Routes: User ============ */
 app.get(

@@ -9,17 +9,26 @@ let data = [
   {
     name: "Marry",
     service: "GEL Keratin Lash Lift and Tint",
+    category: "Lash Lift",
     image: "/assets/customers/lashlift-1.jpg",
   },
   {
     name: "Isabella",
     service: "GEL Keratin Lash Lift and Tint",
-    image: "/assets/customers/lashlift-2.jpg",
+    category: "Lash Lift",
+    image: "/assets/customers/lashlift-3.jpg",
   },
   {
     name: "Isa",
-    service: "GEL Keratin Lash Lift and Tint",
-    image: "/assets/customers/lashlift-3.jpg",
+    service: "Russian Volume Eyelash Extension",
+    category: "Russian Volume",
+    image: "/assets/customers/russian-volume-ext-4.jpg",
+  },
+  {
+    name: "Jane",
+    service: "Skinny Volume Eyelash Extension",
+    category: "Skinny Volume",
+    image: "/assets/customers/skinny-volume-ext-3.jpg",
   },
 ];
 

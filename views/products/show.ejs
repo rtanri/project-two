@@ -1,56 +1,35 @@
 <%- include('../partials/head') %>
+      <h2 class="text-center my-5 display-5"><%= item.service %></h2>
 
-<div class="container mt-5 mb-5">
-      <h2 class="text-center mb-5 display-5"><%= item.service %></h2>
-      <div class="d-flex justify-content-center flex-wrap showpage-width">
-            <img src="<%= item.image %>" class="show-image mb-3 mr-3 border">
-            <div class="d-flex flex-column justify-content-start comment-panel-div">
-                  <div class="d-flex justify-content-start flex-wrap showpage-width">
+      <div class="d-flex bd-highlight mb-3 justify-content-center align-items-center">
+            
+            <img src="<%= item.image %>" class="show-image mb-3 mr-3 border" id="image-model">
+
+            <div class="d-flex flex-column justify-content-start flex-wrap detail-panel-div">
+            
+                  <h3 class="mb-3">What makes our <%= info.category %> different?</h3>
+                  <p class="my-3" style="font-size: 18px;"><%= info.detail %></p>
+                  <hr class="product-info-seperator">
+                  <p class="my-3" style="font-size: 18px;"><span style="font-weight: 600;">Use case: </span><%= info.use_case %></p>
+                  <hr class="product-info-seperator">
+
+                  <div class="d-flex bd-highlight mb-3 justify-content-start">
+                        <a href="#calendar"
+                        class="btn btn-success my-3"
+                        style="height: 38px; margin-right: 20px; max-width: 180px"                            
+                        >Book Timeslot</a>
+      
                         <a href="/beautylash/customers"
-                        class="btn btn-secondary mb-3"
-                        style="height: 38px; margin-right: 20px;"                            
+                        class="btn btn-secondary my-3"
+                        style="height: 38px; margin-right: 20px; max-width: 80px"                            
                         >Back</a>
-                        <% if(user){ %>
-                        <form method="post" action="/post-like">
-                              <input 
-                                    type="text" readonly 
-                                    class="d-none" 
-                                    name="liked" value="<%= item.id %>"
-                              >
-                              <button 
-                                    class="btn btn-secondary frontpage-button mr-3"
-                                    id = "<%= item.image %>"
-                                    >Like
-                              </button>
-                        </form>
-                        <% } %>
-                        <div class="like-status">
-                              10 likes
-                        </div>
                   </div>
-                  <% if(user){ %>
-                  <div>
-                        <form method="post" action="/post-comment">
-                              <input 
-                                    type="text" readonly 
-                                    class="d-none" 
-                                    name="commented" value="<%= item.id %>"
-                              >
-                              <label for="exampleFormControlTextarea1" class="comment-label">Comment:</label>
-                              <textarea class="form-control my-2" id="comment" name="comment" rows="2"></textarea>
-                              <button class="btn btn-primary mr-3">Post</button>
-                        </form>
-                  </div>
-                  <% } else { %>
-                        <p class="like-status">Please login to like and comments</p>
-                  <% } %>
-
-                  <div id="all-comments" class="comment-box"></div>
-
             </div>
       </div>
       <%- include('../calendar/calendar.ejs') %>
-</div>
+
+      
+
 
 <script src="/utils/calendar.js"></script>
 <%- include('../partials/foot') %>
