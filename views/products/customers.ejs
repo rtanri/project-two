@@ -4,20 +4,21 @@
       <h1 class="text-center mb-5">Customers in Instagram</h1>
       <div class="d-flex justify-content-center flex-wrap">
             <% postings.forEach(element => { %> 
-                  <div>
-                        <!-- <a href="/beautylash/customers/<%= element._id %>"> -->
-                              <img src="<%= element.image %>" class="instagram-post mx-2 mb-3 border">
+                  <a href="/beautylash/customers/<%= element._id %>"><img src="<%= element.image %>" class="instagram-post mx-2 mb-3 border"></a>
                               
-                              <!-- <form>
+                              <!-- <form method="post" action="/post-like?_method=PATCH " >
                                     <input 
                                           type="text" readonly 
                                           class="d-none" 
                                           name="liked" value="<%= element._id %>"
                                     >
+                                    <p class="like-status status-style d-none">
+                                          You liked this photo
+                                    </p>
+
                                     <button class="btn btn-secondary customerPage-button mx-2 mb-3">Like</button>
+
                               </form> -->
-                        <!-- </a> -->
-                  </div>
             <% }) %>
         </div>
 

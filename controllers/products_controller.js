@@ -16,7 +16,7 @@ module.exports = {
   },
   customers: async (req, res) => {
     // collect all postings
-    const loginUser = req.session.user;
+
     let postings = [];
 
     try {
@@ -26,13 +26,6 @@ module.exports = {
       console.log("0 - error");
       return "Server error 500";
     }
-    console.log(1);
-
-    // const likedPhoto = req.body.liked;
-
-    // if (likedPhoto || likedPhoto.length) {
-    //   loginUser.liked_post.push(req.body.liked);
-    // }
 
     res.render("products/customers", {
       postings: postings,
@@ -63,27 +56,28 @@ module.exports = {
         res.redirect("/beautylash/users/dashboard");
       });
   },
-  // show: (req, res) => {
-  //   PostModel.findOne({ _id: req.params.id })
-  //     // prettier-ignore
-  //     .then(item => {
-  //       console.log("1 - success");
-  //       console.log(item);
+  show: (req, res) => {
+    let timeslotOptions = ["9am - 11am", "1pm - 3pm", "4pm - 6pm", "7pm - 9pm"];
+    PostModel.findOne({ _id: req.params.id })
+      // prettier-ignore
+      .then(item => {
+        console.log("1 - success");
+        console.log(item);
 
-  //       if (!item) {
-  //         console.log("2 - cannot find post");
-  //         res.redirect("/beautylash/customers");
-  //         return;
-  //       }
-  //       res.render("products/show", { item });
-  //     })
-  //     .catch(err => {
-  //       console.log("3 - error");
-  //       console.log(err);
-  //       res.redirect("/beautylash/customers");
-  //       return;
-  //     });
-  // },
+        if (!item) {
+          console.log("2 - cannot find post");
+          res.redirect("/beautylash/customers");
+          return;
+        }
+        res.render("products/show", { item, timeslotOptions });
+      })
+      .catch(err => {
+        console.log("3 - error");
+        console.log(err);
+        res.redirect("/beautylash/customers");
+        return;
+      });
+  },
   homepage: (req, res) => {
     res.render("products/homepage");
   },

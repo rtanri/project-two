@@ -188,6 +188,28 @@ label {
   padding-bottom: 5px;
 }
 
+/* ======  show page ====== */
+
+.show-image {
+  max-width: 450px;
+  max-height: 450px;
+  margin-right: 50px;
+}
+
+.comment-panel-div {
+  min-width: 400px;
+}
+
+.comment-label {
+  font-size: 20px;
+}
+
+.like-status {
+  font-size: 20px;
+  margin-left: 20px;
+  padding-top: 3px;
+}
+
 /* 
 Color code in light theme
 pink footer: #EECBCB

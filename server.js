@@ -2,12 +2,14 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; //ternary operator
+
 const methodOverride = require("method-override");
 
 const productController = require("./controllers/products_controller");
 const userController = require("./controllers/users_controller");
 const bookingController = require("./controllers/booking_controller");
+const commentController = require("./controllers/comments_controller");
 const session = require("express-session");
 const {
   authenticatedOnly: authenticatedOnlyMiddleware,
@@ -42,9 +44,21 @@ app.use(setUserVarMiddleware);
 /* ========= Routes: Products ============ */
 app.get("/beautylash", productController.index);
 
-// app.get("/beautylash/customers/:id", productController.show);
+app.get("/beautylash/customers/:id", productController.show);
 
 app.get("/beautylash/customers", productController.customers);
+
+app.post(
+  "/post-like",
+  authenticatedOnlyMiddleware,
+  commentController.createLike
+);
+
+app.post(
+  "/post-comment",
+  authenticatedOnlyMiddleware,
+  commentController.createComment
+);
 
 app.post("/beautylash/add-post", productController.createPost);
 
