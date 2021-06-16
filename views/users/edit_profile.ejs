@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>
+<div class="container d-flex flex-column align-items-center">
+      <h2 class="mb-4">My Profile</h2>
+
+      <form method="post" action="/beautylash/users/<%= loginUser._id %>/?_method=PATCH" >
+            <%- include('../partials/input', { name: 'name', placeholder: 'Jessica'})  %>
+            <%- include('../partials/input', { name: 'address', placeholder: "50 Anson Road #12-00"})  %>
+
+            <%- include('../partials/input', { name: 'postal code', placeholder: "478291"})  %>
+            <%- include('../partials/input', { name: 'phone', placeholder: "+65 9223 4567"})  %>
+
+            <div class="d-flex flex-row justify-content-center mt-5">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="/beautylash/users/dashboard"
+                        class="btn btn-secondary my-3"
+                        style="height: 38px; margin-right: 20px; max-width: 80px"                            
+                  >Back</a>
+            </div>
+
+      </form>
+</div>
+<%- include('../partials/foot') %>

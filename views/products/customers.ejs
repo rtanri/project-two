@@ -19,10 +19,10 @@
                   </button>
       </div>
       </form> 
-      <div class="d-flex justify-content-center flex-wrap mt-5">
+      <div class="d-flex justify-content-start flex-wrap mt-5 posting-gallery">
             <% postings.forEach(element => { %> 
                   <a href="/beautylash/customers/<%= element._id %>"><img src="<%= element.image %>" class="instagram-post mx-2 mb-3 border"></a>
             <% }) %>
-        </div>
+      </div>
 
 <%- include('../partials/foot') %>

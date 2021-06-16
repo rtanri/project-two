@@ -58,11 +58,14 @@ app.post(
 app.post("/beautylash/add-post", productController.createPost);
 
 /* ========= Routes: User ============ */
+// rendering combined login + register
 app.get(
   "/beautylash/users/user-sign-in",
   guestOnlyMiddleware,
   userController.combinedForm
 );
+
+// login
 app.get(
   "/beautylash/users/login",
   guestOnlyMiddleware,
@@ -75,6 +78,7 @@ app.post(
   userController.loginUser
 );
 
+// register
 app.get(
   "/beautylash/users/register",
   guestOnlyMiddleware,
@@ -87,11 +91,16 @@ app.post(
   userController.registerUser
 );
 
+// render dashboard page
 app.get(
   "/beautylash/users/dashboard",
   authenticatedOnlyMiddleware,
   userController.dashboard
 );
+
+// render edit page
+app.get("/beautylash/users/:id/edit", userController.edit);
+app.patch("/beautylash/users/:id/", userController.update);
 
 /* ========= Routes: Bookings ============ */
 

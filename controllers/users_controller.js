@@ -124,7 +124,10 @@ module.exports = {
     return;
   },
   dashboard: async (req, res) => {
-    let loginUser = req.session.user;
+    const loginUser = await UserModel.findOne({
+      email: req.session.user.email,
+    });
+
     let allBookings = [];
 
     try {
@@ -143,10 +146,7 @@ module.exports = {
       element.formattedDate = newFormat;
       return;
     });
-
-    console.log("inside allBookings:");
-    console.log(allBookings);
-    console.log("==================");
+    console.log(loginUser);
 
     res.render("users/dashboard.ejs", { allBookings, loginUser });
   },
@@ -157,5 +157,32 @@ module.exports = {
   },
   combinedForm: (req, res) => {
     res.render("users/combined_login_register.ejs");
+  },
+  edit: (req, res) => {
+    loginUser = req.session.user;
+
+    res.render("users/edit_profile.ejs", { loginUser });
+  },
+  update: (req, res) => {
+    loginUser = req.session.user;
+
+    UserModel.updateOne(
+      { email: loginUser.email },
+      {
+        $set: {
+          full_name: req.body.name,
+          address: req.body.address,
+          postal: req.body.postal,
+          phone: req.body.phone,
+        },
+      }
+    )
+      .then(updateResp => {
+        console.log(loginUser);
+        res.redirect("/beautylash/users/dashboard");
+      })
+      .catch(err => {
+        res.redirect("/beautylash/users/<%= loginUser._id %>/edit");
+      });
   },
 };

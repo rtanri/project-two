@@ -35,8 +35,8 @@ body {
 }
 
 .instagram-post {
-  max-width: 350px;
-  max-height: 350px;
+  width: 350px;
+  height: 350px;
 }
 
 .margin-right {
@@ -54,6 +54,13 @@ body {
 
 .customerPage-button:hover {
   background-color: palevioletred;
+}
+
+.posting-gallery {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  padding: 0;
 }
 
 label {
@@ -171,28 +178,22 @@ label {
 
 .booking-box {
   border: 2px solid white;
-  padding: 20px 90px;
+  padding: 30px 90px 50px 90px;
   min-width: 700px;
   max-width: 800px;
   margin-right: 20px;
-  margin: 10px auto;
+  margin: 0 auto;
   min-width: 750px;
 }
 
-.utility-box {
-  border: 2px solid white;
-  padding: 20px;
-  min-width: 380px;
-  max-width: 500px;
+.table-title {
+  font-size: larger;
+  font-weight: 700;
 }
 
 .table-booking-td {
   min-width: 150px;
   padding: 10px;
-}
-.table-title {
-  font-size: larger;
-  font-weight: 700;
 }
 
 .cancel-button {
@@ -201,6 +202,11 @@ label {
   margin-bottom: 0;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.table-field-td {
+  width: 150px;
+  padding: 10px;
 }
 
 /* ======  show page ====== */

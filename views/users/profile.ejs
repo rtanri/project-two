@@ -1,0 +1,24 @@
+<div class="container d-flex flex-column align-items-center">
+      <h2 class="mb-4">My Profile</h2>
+
+      <table class="table table-dark table-striped">
+            <tr>
+                  <td class="table-field-td">Name: </td>
+                  <td><%= loginUser.full_name  %></td>
+            </tr>
+            <tr>
+                  <td class="table-field-td">Address: </td>
+                  <td><%= loginUser.address  %></td>
+            </tr>
+            <tr>
+                  <td class="table-field-td">Postal: </td>
+                  <td><%= loginUser.postal_code  %></td>
+            </tr>
+            <tr >
+                  <td class="table-field-td">Phone: </td>
+                  <td><%= loginUser.phone  %></td>
+            </tr>
+      </table>
+
+      <a href="/beautylash/users/<%= loginUser._id %>/edit" class="btn btn-success">Edit</a>
+</div>
