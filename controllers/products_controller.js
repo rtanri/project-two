@@ -15,7 +15,7 @@ module.exports = {
     let postings = [];
 
     try {
-      postings = await PostModel.find();
+      postings = await PostModel.find().sort({ created_at: -1 });
     } catch (err) {
       res.statusCode(500);
       console.log("0 - error");
@@ -31,7 +31,7 @@ module.exports = {
     let postings = [];
 
     try {
-      postings = await PostModel.find();
+      postings = await PostModel.find().sort({ created_at: -1 });
     } catch (err) {
       res.statusCode(500);
       console.log("0 - error");
@@ -50,7 +50,9 @@ module.exports = {
       return;
     }
     try {
-      newPostings = await PostModel.find({ category: filter });
+      newPostings = await PostModel.find({ category: filter }).sort({
+        created_at: 1,
+      });
     } catch (err) {
       res.statusCode(500);
       console.log("0 - error");

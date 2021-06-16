@@ -9,38 +9,49 @@
 
       <!--First slide-->
       <div class="carousel-item active">
-
+        
         <div class="row">
           <div class="col-md-4">
-            <a href="/beautylash/customers/60c8a247e0269bbdf538f1f5">
-              <img src="/assets/customers/lashlift-1.jpg" class="carousel-image">
+            <a href="/beautylash/customers/<%= postings[0]._id %>">
+              <img src="<%= postings[0].image %>" class="carousel-image">
+            </a>
+          </div>
+        
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <a href="/beautylash/customers/<%= postings[1]._id %>">
+              <img src="<%= postings[1].image %>" class="carousel-image">
             </a>
           </div>
 
           <div class="col-md-4 clearfix d-none d-md-block">
-            <img src="/assets/customers/lashlift-7.jpg" class="carousel-image">
-          </div>
-
-          <div class="col-md-4 clearfix d-none d-md-block">
-            <img src="/assets/customers/lashlift-3.jpg" class="carousel-image">
+            <a href="/beautylash/customers/<%= postings[2]._id %>">
+              <img src="<%= postings[2].image %>" class="carousel-image">
+            </a>
           </div>
         </div>
       </div>
+    
       <!--First slide-->
 
       <!--Second slide-->
       <div class="carousel-item">
         <div class="row">
           <div class="col-md-4">
-            <img src="/assets/customers/lashlift-4.jpg" class="carousel-image">
+            <a href="/beautylash/customers/<%= postings[3]._id %>">
+              <img src="<%= postings[3].image %>" class="carousel-image">
+            </a>
           </div>
 
           <div class="col-md-4 clearfix d-none d-md-block">
-            <img src="/assets/customers/lashlift-5.jpg" class="carousel-image">
+            <a href="/beautylash/customers/<%= postings[4]._id %>">
+              <img src="<%= postings[4].image %>" class="carousel-image">
+            </a>
           </div>
 
           <div class="col-md-4 clearfix d-none d-md-block">
-            <img src="/assets/customers/lashlift-6.jpg" class="carousel-image">
+            <a href="/beautylash/customers/<%= postings[5]._id %>">
+              <img src="<%= postings[5].image %>" class="carousel-image">
+            </a>
           </div>
         </div>
       </div>
