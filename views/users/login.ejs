@@ -1,18 +1,18 @@
 <div class="container mb-5 d-flex flex-column align-items-center login-box">
       <h2 class="text-center">Login as existing customer</h2>
       <p class="text-center mb-5">Welcome back to Beautylash Singapore</p>
-      <form method="Post" action="/beautylash/users/login">
+      <form method="POST" action="/beautylash/users/login">
             <div class="mb-3">
                   <label for="email" class="form-label form-input-size">Email</label>
-                  <input type="email" class="form-control form-input-size" id="email" name="email" />
+                  <input type="email" class="form-control form-input-size" id="login_email" name="login_email" />
             </div>
             <div class="mb-3">
                   <label for="password" class="form-label form-input-size">Password</label>
                   <input
                         type="password"
                         class="form-control form-input-size"
-                        id="password"
-                        name="password"
+                        id="login_password"
+                        name="login_password"
                   />
             </div>
             <div class="d-flex flex-row justify-content-center mt-5">

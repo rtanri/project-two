@@ -102,6 +102,9 @@ app.get(
 app.get("/beautylash/users/:id/edit", userController.edit);
 app.patch("/beautylash/users/:id/", userController.update);
 
+// logout
+app.post("/users/logout", authenticatedOnlyMiddleware, userController.logout);
+
 /* ========= Routes: Bookings ============ */
 
 app.post("/calendar-booking", bookingController.calendarBooking);

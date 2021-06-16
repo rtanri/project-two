@@ -13,18 +13,18 @@ module.exports = {
   registerUser: async (req, res) => {
     /* ===== validating user, pw matches, email ===== */
     if (!req.body.full_name) {
-      res.redirect("/beautylash/users/register");
+      res.redirect("/beautylash/users/user-sign-in");
       console.log(1);
       return;
     }
     if (!req.body.email || !req.body.password) {
-      res.redirect("/beautylash/users/register");
+      res.redirect("/beautylash/users/user-sign-in");
       //message: error
       console.log(2);
       return;
     }
     if (req.body.password !== req.body.password_confirm) {
-      res.redirect("/beautylash/users/register");
+      res.redirect("/beautylash/users/user-sign-in");
       // error message
       console.log(3);
       return;
@@ -41,7 +41,7 @@ module.exports = {
       return;
     }
     if (user) {
-      res.redirect("/beautylash/users/login");
+      res.redirect("/beautylash/users/user-sign-in");
       // error message
       console.log(5);
       return;
@@ -66,11 +66,12 @@ module.exports = {
       });
     } catch (err) {
       console.log(err);
-      res.redirect("/beautylash/users/register");
+      res.redirect("/beautylash/users/user-sign-in");
       return;
     }
+    console.log("7 - account is created, now login");
     // everything is correct and nicely done, and then directed to dashboard
-    res.redirect("/beautylash/users/dashboard");
+    res.redirect("/beautylash/users/user-sign-in");
     return;
   },
 
@@ -79,41 +80,41 @@ module.exports = {
   },
   loginUser: async (req, res) => {
     // validate if email or password is empty
-    if (!req.body.email || !req.body.password) {
+    if (!req.body.login_email || !req.body.login_password) {
       // error message
       console.log(1);
-      res.redirect("/beautylash/users/login");
+      res.redirect("/beautylash/users/user-sign-in");
       return;
     }
     // find user with email given
     let user = {};
 
     try {
-      user = await UserModel.findOne({ email: req.body.email });
+      user = await UserModel.findOne({ email: req.body.login_email });
     } catch (err) {
       console.log(err);
       console.log(2);
-      res.redirect("/beautylash/users/login");
+      res.redirect("/beautylash/users/user-sign-in");
       return;
     }
 
     if (!user) {
       console.log(3);
-      res.redirect("/beautylash/users/login");
+      res.redirect("/beautylash/users/user-sign-in");
       // recommend to register new user
       return;
     }
     console.log(user);
     console.log("salt recorded: " + user.hash);
     // User is found, then create the hashed+salted with req.body.password
-    const saltedPassword = user.pwsalt + req.body.password;
+    const saltedPassword = user.pwsalt + req.body.login_password;
     const hashConverter = createHash("sha256");
     hashConverter.update(saltedPassword);
     const newHashedPassword = hashConverter.digest("hex");
 
     // compare database pw and req.body.password
     if (user.hash !== newHashedPassword) {
-      res.redirect("/beautylash/users/login");
+      res.redirect("/beautylash/users/user-sign-in");
       return;
       // print error message
     }
@@ -152,8 +153,8 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.destroy();
+
     res.redirect("/beautylash");
-    return;
   },
   combinedForm: (req, res) => {
     res.render("users/combined_login_register.ejs");
