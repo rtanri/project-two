@@ -9,20 +9,20 @@ let data = [
   {
     category: "Lash Lift",
     detail:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    use_case: "Fresh glossy looks, and fit with daily makeup",
+      "Lash lift is not a lash-extensions. Our 45 minute session uses KERATIN serum to lift your natural lashes from the roots, lasting glossy looks for up to 2 months. Keratin treatment is famous to help grow short and thin lash.",
+    use_case: "Fresh and natural looks; boost lash health",
   },
   {
     category: "Russian Volume",
     detail:
-      "Ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat dolor sit ame.",
+      "6D Russian volume eyelash extensions is always surprisingly light, soft and long lasting. Signature russian set of lashes are has high retention lasting 4 weeks++. You can fully customize your set by adding more volume for glamorous look.",
     use_case: "Travel photos, wedding, and dinner date",
   },
   {
     category: "Skinny Volume",
     detail:
-      "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    use_case: "Office executive looks, and attending events",
+      "2D Skinny volume eyelash extension replaces your daily mascara and eyeliner every morning - to start your day without eye touch-up. This slim extensions type has high retention lasting 4 weeks++. Based on your eyes shape, we can customise a 'doll-eyes' or 'cat-eyes' for you.",
+    use_case: "Office executive looks, attending events",
   },
 ];
 
