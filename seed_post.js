@@ -2,8 +2,11 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const { PostModel } = require("./models/post_model");
+const moment = require("moment");
 
 mongoose.set("useCreateIndex", true);
+
+const timestampNow = moment().utc();
 
 let data = [
   {
@@ -11,24 +14,21 @@ let data = [
     service: "GEL Keratin Lash Lift and Tint",
     category: "Lash Lift",
     image: "/assets/customers/lashlift-1.jpg",
+    created_at: timestampNow,
   },
   {
     name: "Isabella",
     service: "GEL Keratin Lash Lift and Tint",
     category: "Lash Lift",
+    image: "/assets/customers/lashlift-2.jpg",
+    created_at: timestampNow,
+  },
+  {
+    name: "Marry",
+    service: "GEL Keratin Lash Lift and Tint",
+    category: "Lash Lift",
     image: "/assets/customers/lashlift-3.jpg",
-  },
-  {
-    name: "Isa",
-    service: "Russian Volume Eyelash Extension",
-    category: "Russian Volume",
-    image: "/assets/customers/russian-volume-ext-4.jpg",
-  },
-  {
-    name: "Jane",
-    service: "Skinny Volume Eyelash Extension",
-    category: "Skinny Volume",
-    image: "/assets/customers/skinny-volume-ext-3.jpg",
+    created_at: timestampNow,
   },
 ];
 

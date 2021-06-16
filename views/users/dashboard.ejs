@@ -1,49 +1,49 @@
 <%- include('../partials/head') %>
-
-<div class="my-5">
+<div class="header-banner">
       <h1 class="text-center display-4">Welcome to Beautylash</h1>
-      <h4 class="text-center mb-5"><%= loginUser.full_name %></h4>
-
-            <div class="booking-box">
-                  <%- include('./profile.ejs') %>
-            </div>                  
-
-            <div class="d-flex flex-column justify-content-center booking-box">
-                  
-                  <h2 class="mb-4 text-center">Upcoming appointment</h2>
-
-                  <table class="mb-3 table-responsive">
-                        <tr class="mb-3 table-title">
-                              <td class="table-booking-td">Date</td>
-                              <td class="table-booking-td">Time</td>
-                              <td class="table-booking-td">Treatment</td>
-                              <td class=""></td>
-                        </tr>
-                        <% allBookings.forEach(booking => { %>
-                        <tr class="mb-3" style="font-size: 16px;">
-                              <td class="table-booking-td"><%= booking.formattedDate %></td>
-                              <td class="table-booking-td"><%= booking.timeslot %></td>
-                              <td class="table-booking-td"><%= booking.treatment %></td>
-                              <td class="">
-                                    <form method="post" action="/delete-booking?_method=DELETE" style="margin-bottom: 0;">
-                                          <input 
-                                          type="text" 
-                                          readonly 
-                                          class="d-none" 
-                                          name="bookingId" value="<%= booking._id %>"
-                                    >
-                                          <button class="btn btn-danger cancel-button">X</button>
-                                    </form>
-                              </td>
-                        </tr>
-                        <% }) %>
-                  </table>         
-            </div> 
-
-            <div class="booking-box mb-5">
-                  <%- include('../products/new.ejs') %>
-            </div>
-       
+      <h4 class="text-center"><%= loginUser.full_name %></h4>
 </div>
+
+<div class="booking-box mt-5">
+      <%- include('./profile.ejs') %>
+</div>                  
+
+<div class="d-flex flex-column justify-content-center booking-box mt-3">
+      
+      <h1 class="mb-4 text-center">Upcoming Appointment</h1>
+
+      <table class="mb-3 table-responsive">
+            <tr class="mb-3 table-title">
+                  <td class="table-field-td">Date</td>
+                  <td class="table-field-td">Time</td>
+                  <td class="table-field-td">Treatment</td>
+                  <td class=""></td>
+            </tr>
+            <% allBookings.forEach(booking => { %>
+            <tr class="mb-3" style="font-size: 16px;">
+                  <td class="table-field-td"><%= booking.formattedDate %></td>
+                  <td class="table-field-td"><%= booking.timeslot %></td>
+                  <td class="table-treatment-td"><%= booking.treatment %></td>
+                  <td class="">
+                        <form method="post" action="/delete-booking?_method=DELETE" style="margin-bottom: 0;">
+                              <input 
+                              type="text" 
+                              readonly 
+                              class="d-none" 
+                              name="bookingId" value="<%= booking._id %>"
+                        >
+                              <button class="btn btn-danger cancel-button">X</button>
+                        </form>
+                  </td>
+            </tr>
+            <% }) %>
+      </table>         
+</div> 
+
+<div class="booking-box mt-3">
+      <%- include('../products/new.ejs') %>
+</div>
+       
+
 
 <%- include('../partials/foot') %>

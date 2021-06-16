@@ -9,11 +9,30 @@ body {
 
 .frontpage-banner {
   width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid grey;
+}
+
+hr.frontpage-break {
+  margin: 0 auto;
+  color: inherit;
+  border: 0;
+  opacity: 0.25;
+  max-width: 1100px;
+  align-items: center;
+  justify-content: center;
+  height: 3px;
 }
 
 .frontpage-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.intro-image {
+  max-width: 450px;
+  max-height: 316px;
+  margin-left: 10px;
 }
 
 .frontpage-message {
@@ -43,6 +62,17 @@ body {
   margin-right: 20px;
 }
 
+/* customer page */
+
+.header-banner {
+  width: 100%;
+  background: url("/assets/marketing/page-banner.png");
+  padding: 50px;
+  color: black;
+  border: 1px solid grey;
+  background-size: cover;
+}
+
 .customerPage-button {
   width: 350px;
   background-color: #e6c4c0;
@@ -50,6 +80,12 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   font-weight: 700;
+}
+
+.customer-input-size {
+  width: 200px;
+  font-size: 20px;
+  border: 1px solid #3d4246;
 }
 
 .customerPage-button:hover {
@@ -124,9 +160,6 @@ label {
 .carousel-image {
   max-width: 250px;
   max-height: 250px;
-}
-.carousel {
-  /* background-color: coral; */
 }
 
 .shift-down {
@@ -209,6 +242,11 @@ label {
   padding: 10px;
 }
 
+.table-treatment-td {
+  width: 300px;
+  padding: 10px;
+}
+
 /* ======  show page ====== */
 
 .show-image {
@@ -229,6 +267,15 @@ label {
 .product-info-seperator {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/* footer */
+.footer-banner {
+  background-color: #f4d0b9;
+  max-height: 100px;
+  margin-top: 80px;
+  padding: 20px 5%;
+  color: #3d4246;
 }
 
 /* 
