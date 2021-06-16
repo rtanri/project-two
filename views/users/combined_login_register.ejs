@@ -2,6 +2,16 @@
 <div class="header-banner">
       <h1 class="text-center mb-3 display-4 main-page-title">Member Log In</h1>
 </div>
+      <% if(messages.length > 0) { %>
+      <div class="alert alert-danger p-0 pt-3 alert-margin" role="alert">
+            <ul>
+                  <% for(let element of messages){ %>
+                  <li><%= element %></li> 
+                  <% } %>
+            </ul>
+      </div>
+<% } %>
+
 <div class="d-flex bd-highlight my-5 justify-content-center register-page-width">
       <%- include('./register') %>
       <%- include('./login') %>

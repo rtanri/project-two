@@ -10,6 +10,7 @@ const productController = require("./controllers/products_controller");
 const userController = require("./controllers/users_controller");
 const bookingController = require("./controllers/booking_controller");
 const session = require("express-session");
+const { flash } = require("express-flash-message");
 const {
   authenticatedOnly: authenticatedOnlyMiddleware,
   guestOnly: guestOnlyMiddleware,
@@ -38,6 +39,7 @@ app.use(
     cookie: { path: "/", secure: false, maxAge: 7200000 },
   })
 );
+app.use(flash({ sessionKeyName: "flash_message" }));
 app.use(setUserVarMiddleware);
 
 /* ========= Routes: Products ============ */
@@ -66,11 +68,11 @@ app.get(
 );
 
 // login
-app.get(
-  "/beautylash/users/login",
-  guestOnlyMiddleware,
-  userController.loginForm
-);
+// app.get(
+//   "/beautylash/users/login",
+//   guestOnlyMiddleware,
+//   userController.loginForm
+// );
 
 app.post(
   "/beautylash/users/login",
@@ -79,11 +81,11 @@ app.post(
 );
 
 // register
-app.get(
-  "/beautylash/users/register",
-  guestOnlyMiddleware,
-  userController.registerForm
-);
+// app.get(
+//   "/beautylash/users/register",
+//   guestOnlyMiddleware,
+//   userController.registerForm
+// );
 
 app.post(
   "/beautylash/users/register",

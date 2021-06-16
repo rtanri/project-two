@@ -2,10 +2,31 @@
       <h1 class="mb-4">Upload New Photo</h1>
 
       <form method="post" action="/beautylash/add-post" >
-            <%- include('../partials/input', { name: 'name', placeholder: 'Jessica'})  %>
-            <%- include('../partials/input', { name: 'service', placeholder: "Russian Volume Extension"})  %>
+            <div class="flex direction my-3">
+                  <label style="font-size: 20px;">Name: </label> 
+                  <input type="text" name="name" placeholder="June Koh" style="min-width: 300px; padding: 5px 5px;">
+            </div>
+            <div class="flex direction my-3">
+                  <label style="font-size: 20px;">Service: </label> 
+                  <input type="text" name="service" placeholder="Lash Lift" style="min-width: 300px; padding: 5px 5px;" required>
+            </div>
+            
+            <div class="flex direction my-3">
+                  <label style="font-size: 20px;">Category: </label> 
+                  <select name="category" class="margin-right customer-input-size" required>
+                        <option value="" selected>Select here</option>
+                        <option value="Lash Lift">Lash Lift</option>
+                        <option value="Russian Volume">Russian Volume</option>
+                        <option value="Skinny Volume">Skinny Volume</option>
+                  </select>
+            </div>
 
-            <%- include('../partials/input', { name: 'image', placeholder: "image url"})  %>
+
+            <div class="flex direction my-3">
+                  <label style="font-size: 20px;">Image Url:</label> 
+                  <input type="text" name="image" placeholder="Enter image url here" style="min-width: 300px; padding: 5px 5px;" required>
+            </div>
+
             <div class="d-flex flex-row justify-content-center mt-5">
                   <button type="submit" class="btn btn-secondary frontpage-button">Submit</button>
             </div>

@@ -221,6 +221,11 @@ label {
   border-left: 1px solid #eaeaea;
 }
 
+.alert-margin {
+  margin: 20px auto;
+  width: 1000px;
+}
+
 /* ===== dashboard ===== */
 
 .booking-box {

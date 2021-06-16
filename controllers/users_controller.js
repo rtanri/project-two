@@ -7,26 +7,28 @@ const { v4: uuidv4 } = require("uuid");
 const { createHash } = require("crypto");
 
 module.exports = {
-  registerForm: (req, res) => {
-    res.render("users/register.ejs");
+  combinedForm: async (req, res) => {
+    const messages = await req.consumeFlash("error");
+    console.log(messages);
+    res.render("users/combined_login_register.ejs", {
+      messages: messages,
+    });
   },
   registerUser: async (req, res) => {
     /* ===== validating user, pw matches, email ===== */
     if (!req.body.full_name) {
+      await req.flash("error", "Fail to register, 'Full Name' is empty");
       res.redirect("/beautylash/users/user-sign-in");
-      console.log(1);
       return;
     }
     if (!req.body.email || !req.body.password) {
+      await req.flash("error", "Fail to register, email or password is empty");
       res.redirect("/beautylash/users/user-sign-in");
-      //message: error
-      console.log(2);
-      return;
+      eturn;
     }
     if (req.body.password !== req.body.password_confirm) {
+      await req.flash("error", "Fail to register, password did not match");
       res.redirect("/beautylash/users/user-sign-in");
-      // error message
-      console.log(3);
       return;
     }
 
@@ -41,9 +43,8 @@ module.exports = {
       return;
     }
     if (user) {
+      await req.flash("error", "Fail to register, email has been registered");
       res.redirect("/beautylash/users/user-sign-in");
-      // error message
-      console.log(5);
       return;
     }
     /* ===== validation end ===== */
@@ -55,7 +56,7 @@ module.exports = {
 
     const hashConverter = createHash("sha256");
     hashConverter.update(saltedPassword);
-    console.log(6);
+
     try {
       await UserModel.create({
         full_name: req.body.full_name,
@@ -70,19 +71,17 @@ module.exports = {
       return;
     }
     console.log("7 - account is created, now login");
-    // everything is correct and nicely done, and then directed to dashboard
     res.redirect("/beautylash/users/user-sign-in");
     return;
   },
 
-  loginForm: (req, res) => {
-    res.render("users/login.ejs");
-  },
   loginUser: async (req, res) => {
     // validate if email or password is empty
     if (!req.body.login_email || !req.body.login_password) {
-      // error message
-      console.log(1);
+      await req.flash(
+        "error",
+        "Fail to login, please fill-in email and password"
+      );
       res.redirect("/beautylash/users/user-sign-in");
       return;
     }
@@ -92,16 +91,14 @@ module.exports = {
     try {
       user = await UserModel.findOne({ email: req.body.login_email });
     } catch (err) {
-      console.log(err);
-      console.log(2);
+      await req.flash("error", err);
       res.redirect("/beautylash/users/user-sign-in");
       return;
     }
 
     if (!user) {
-      console.log(3);
+      await req.flash("error", "Fail to login, email is not registered");
       res.redirect("/beautylash/users/user-sign-in");
-      // recommend to register new user
       return;
     }
     console.log(user);
@@ -114,12 +111,11 @@ module.exports = {
 
     // compare database pw and req.body.password
     if (user.hash !== newHashedPassword) {
+      await req.flash("error", "Fail to login, wrong password");
       res.redirect("/beautylash/users/user-sign-in");
       return;
-      // print error message
     }
-    // everything is nicely correct, then set 'session' and directed to dashboard
-    console.log("4 - all correct");
+
     req.session.user = user;
     res.redirect("/beautylash/users/dashboard");
     return;
@@ -156,9 +152,7 @@ module.exports = {
 
     res.redirect("/beautylash");
   },
-  combinedForm: (req, res) => {
-    res.render("users/combined_login_register.ejs");
-  },
+
   edit: (req, res) => {
     loginUser = req.session.user;
 
@@ -187,3 +181,10 @@ module.exports = {
       });
   },
 };
+
+// registerForm: (req, res) => {
+//   res.render("users/register.ejs");
+// },
+// loginForm: (req, res) => {
+//   res.render("users/login.ejs");
+// },
