@@ -10,24 +10,10 @@ const timestampNow = moment().utc();
 
 let data = [
   {
-    name: "Marry",
-    service: "GEL Keratin Lash Lift and Tint",
-    category: "Lash Lift",
-    image: "/assets/customers/lashlift-1.jpg",
-    created_at: timestampNow,
-  },
-  {
     name: "Isabella",
     service: "GEL Keratin Lash Lift and Tint",
     category: "Lash Lift",
-    image: "/assets/customers/lashlift-2.jpg",
-    created_at: timestampNow,
-  },
-  {
-    name: "Marry",
-    service: "GEL Keratin Lash Lift and Tint",
-    category: "Lash Lift",
-    image: "/assets/customers/lashlift-3.jpg",
+    image: "/assets/customers/lashlift-18.jpg",
     created_at: timestampNow,
   },
 ];

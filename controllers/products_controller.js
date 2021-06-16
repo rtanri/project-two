@@ -51,7 +51,7 @@ module.exports = {
     }
     try {
       newPostings = await PostModel.find({ category: filter }).sort({
-        created_at: 1,
+        created_at: -1,
       });
     } catch (err) {
       res.statusCode(500);

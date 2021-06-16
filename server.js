@@ -67,25 +67,11 @@ app.get(
   userController.combinedForm
 );
 
-// login
-// app.get(
-//   "/beautylash/users/login",
-//   guestOnlyMiddleware,
-//   userController.loginForm
-// );
-
 app.post(
   "/beautylash/users/login",
   guestOnlyMiddleware,
   userController.loginUser
 );
-
-// register
-// app.get(
-//   "/beautylash/users/register",
-//   guestOnlyMiddleware,
-//   userController.registerForm
-// );
 
 app.post(
   "/beautylash/users/register",

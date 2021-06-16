@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   created_at: { type: Date },
   phone: { type: String },
   address: { type: String },
-  postal_code: { type: String },
+  postal: { type: String },
 });
 
 const UserModel = mongoose.model("user", userSchema);
