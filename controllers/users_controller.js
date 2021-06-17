@@ -70,7 +70,7 @@ module.exports = {
       res.redirect("/beautylash/users/user-sign-in");
       return;
     }
-    console.log("7 - account is created, now login");
+    await req.flash("error", "Registration is succesful");
     res.redirect("/beautylash/users/user-sign-in");
     return;
   },
