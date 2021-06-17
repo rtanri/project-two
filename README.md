@@ -55,5 +55,5 @@ Fully developed web for booking services, customer login and upselling features
 ## Reference used to help solving issues
 
 1. Frequency counter - [Link here](https://levelup.gitconnected.com/how-to-solve-an-anagram-algorithm-using-a-frequency-counter-5bb1f0b817ef)
-1. Using Fetch in routing (res.send) - [Link here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-1. MAP Custom Object - [Link here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+1. MAP JS - [Link here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+1. Using Fetch in routing (res.send) - [Link here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
