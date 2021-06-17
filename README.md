@@ -26,9 +26,9 @@ Fully developed web for booking services, customer login and upselling features
 
 1. Register & Login - to help user registration and user login in the same page, ![loginAndRegister](./public/assets/readme/login.jpg)
 
-1. Dashboard - to allow user to have full visibility on their profile, upcoming bookings, and be part of community by adding pictures, ![dashboard](./public/assets/readme/dashboard.jpg)
+1. Dashboard - to allow user to have full visibility on their profile, upcoming bookings, and be part of community by adding pictures, ![dashboard](./public/assets/readme/new-dashboard.jpg)
 
-1. Edit Profile - to edit user address, postal code and contact number
+1. Edit Profile - to edit user address, postal code and contact number ![edit profile](./public/assets/readme/edit-profile.jpg)
 
 ## Other features that I plan to add in future
 
